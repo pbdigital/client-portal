@@ -6,7 +6,7 @@
 		<div class="notification-container">
 			<div class="brand inline">
 				<div class="m-l-50">
-					<h4 class="m-l-20"><span class="bold">WHAAM</span></h4>
+					<h4 class="m-l-20"><span class="bold">Clients</span></h4>
 				</div> 
 			</div>
 			<!-- START NOTIFICATION LIST -->

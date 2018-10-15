@@ -46,3 +46,11 @@
 	<link href="<?=url('/')?>/public/pages/css/pages-icons.css" rel="stylesheet" type="text/css">
 	<link class="main-stylesheet" href="<?=url('/')?>/public/pages/css/pages.css" rel="stylesheet" type="text/css" />
 	
+
+	<style type="text/css">
+	
+	.quickview-wrapper {
+	width:500px;
+	right:-500px;
+	}
+	</style>

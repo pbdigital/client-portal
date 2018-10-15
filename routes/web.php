@@ -14,8 +14,8 @@
 Auth::routes();
 
 Route::get('/', 'HomeController@index')->name('home');
-Route::get('/home', 'HomeController@index')->name('home');
-
+Route::any("/home_ajax", "HomeController@home_ajax");
+Route::any("/file_upload", "HomeController@file_upload");
 
 #Logout
 Route::get("/logout", function(){

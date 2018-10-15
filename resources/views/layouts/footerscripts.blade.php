@@ -54,9 +54,9 @@
 <script src="<?=url('/')?>/public/assets/js/custom.js?v=1.1" type="text/javascript"></script>
 
 <script type="text/javascript">
-    var ImpactHPbaseUrl = "{{url('/')}}/";
+    var clientsAutomationbaseUrl = "{{url('/')}}/";
 </script>
-<script src="{{url("/public/assets/js/impacthp.js")}}" type="text/javascript"></script>
+<script src="{{url("/public/assets/js/clientsAutomation.js")}}" type="text/javascript"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-timepicker/1.10.0/jquery.timepicker.min.js"></script>
 
 

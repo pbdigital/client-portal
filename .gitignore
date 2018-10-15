@@ -1,6 +1,8 @@
 /node_modules
 /public/hot
 /public/storage
+/public/asana_files
+/public/asana_files/*
 /storage/*.key
 /vendor
 /.idea
