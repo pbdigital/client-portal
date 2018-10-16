@@ -1,7 +1,7 @@
 <?php 
 #\App\Helper::debug($stories);
 ?>
-<div class="" style="padding:10px 20px; position:relative">
+<div class="" style="padding: 0px 20px;position:relative;margin: 30px 0px;">
 
     <h5 contenteditable="true" style="font-weight:bold"><?php echo $task_details["name"]?></h5>
     <textarea class="form-control" style="min-height:250px"><?php echo $task_details["notes"];?></textarea>
