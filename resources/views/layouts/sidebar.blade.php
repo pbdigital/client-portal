@@ -52,7 +52,10 @@
 						<span class="bg-success icon-thumbnail"><i class="pg-home"></i></span>
   
 				</li>
-  
+				
+				<?php 
+				if(\Auth::user()->user_type==2):
+				?>
 				<li class="m-t-30 ">
   
 					<a href="<?php echo url("/");?>/settings" class="detailed">
@@ -62,6 +65,9 @@
 					<span class=" icon-thumbnail"><i class="fa fa-tasks"></i></span>
   
 				</li>
+				<?php 
+				endif;
+				?>
 
 				<li>
 					<a href="<?php echo url("/");?>/meeting" class="detailed">
