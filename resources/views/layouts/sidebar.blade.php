@@ -55,8 +55,8 @@
   
 				<li class="m-t-30 ">
   
-						<a href="<?php echo url("/");?>/client_intel" class="detailed">
-							  <span class="title">Client Intel</span>
+						<a href="<?php echo url("/");?>/settings" class="detailed">
+							  <span class="title">Settings</span>
 						</a>
   
 						<span class=" icon-thumbnail"><i class="fa fa-tasks"></i></span>

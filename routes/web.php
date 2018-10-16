@@ -17,6 +17,9 @@ Route::get('/', 'HomeController@index')->name('home');
 Route::any("/home_ajax", "HomeController@home_ajax");
 Route::any("/file_upload", "HomeController@file_upload");
 
+Route::get("/settings", "SettingsController@index");
+Route::any("/settings_ajax", "SettingsController@settings_ajax");
+
 #Logout
 Route::get("/logout", function(){
     return View::make("logout");

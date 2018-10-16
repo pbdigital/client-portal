@@ -19,7 +19,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'username', 'email', 'password', 'token', 'active',
+        'name', 'username', 'email', 'password', 'token', 'active', 'first_name', 'last_name'
     ];
 
     /**
@@ -47,4 +47,9 @@ class User extends Authenticatable
         endif;
         
     } // get_useR_asana_project_id
+
+    static function get_users(){
+        $users = DB::select(" SELECT * FROM `users` INNER JOIN user_asana_projects ON `users`.`id` = user_asana_projects.user_id  ");
+        return $users;
+    } // get_users
 }
