@@ -55,12 +55,19 @@
   
 				<li class="m-t-30 ">
   
-						<a href="<?php echo url("/");?>/settings" class="detailed">
-							  <span class="title">Settings</span>
-						</a>
+					<a href="<?php echo url("/");?>/settings" class="detailed">
+							<span class="title">Settings</span>
+					</a>
+
+					<span class=" icon-thumbnail"><i class="fa fa-tasks"></i></span>
   
-						<span class=" icon-thumbnail"><i class="fa fa-tasks"></i></span>
-  
+				</li>
+
+				<li>
+					<a href="<?php echo url("/");?>/meeting" class="detailed">
+						<span class="title">Schedule Metting</span>
+					</a>
+					<span class=" icon-thumbnail"><i class="fa fa-clock-o"></i></span>
 				</li>
 
 				 

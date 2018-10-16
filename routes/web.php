@@ -20,6 +20,7 @@ Route::any("/file_upload", "HomeController@file_upload");
 Route::get("/settings", "SettingsController@index");
 Route::any("/settings_ajax", "SettingsController@settings_ajax");
 
+Route::get("/meeting", "MeetingsController@index");
 #Logout
 Route::get("/logout", function(){
     return View::make("logout");
