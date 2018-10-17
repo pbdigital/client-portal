@@ -58,7 +58,7 @@
 </script>
 <script src="{{url("/public/assets/js/clientsAutomation.js")}}" type="text/javascript"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-timepicker/1.10.0/jquery.timepicker.min.js"></script>
-
+<script>$('body').addClass('menu-pin');</script>
 
 
 
