@@ -72,10 +72,12 @@
                                                 $full_details = false;
                                             endif;
                                             #debug($full_details);
-
-                                            foreach($sections as $esec):
-                                                if($esec["id"]==$etask["id"]) $is_section = true;
-                                            endforeach;
+                                            
+                                            if(!empty($sections)):
+                                                foreach($sections as $esec):
+                                                    if($esec["id"]==$etask["id"]) $is_section = true;
+                                                endforeach;
+                                            endif;
 
                                             if( $is_section ):
                                                 echo "<h6>".$etask["name"]."</h6>";
