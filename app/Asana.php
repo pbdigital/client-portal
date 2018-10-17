@@ -33,9 +33,14 @@ class Asana
 
         $result = json_decode($result, true );
 
-        $tasks  = $result["data"];
+        if(!empty($result["data"])):
+                
+            $tasks  = $result["data"];
 
-        return $tasks;
+            return $tasks;
+        else:
+            return false;
+        endif;
     } // api_send
 
     public static function set_project_id($project_id){
