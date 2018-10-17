@@ -45,7 +45,8 @@
 
 	<link href="<?=url('/')?>/public/pages/css/pages-icons.css" rel="stylesheet" type="text/css">
 	<link class="main-stylesheet" href="<?=url('/')?>/public/pages/css/pages.css" rel="stylesheet" type="text/css" />
-	
+	<link href="<?=url('/')?>/public/assets/css/style.css" rel="stylesheet" type="text/css" />
+
 
 	<style type="text/css">
 	
