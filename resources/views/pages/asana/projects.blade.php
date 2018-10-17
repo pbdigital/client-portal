@@ -13,16 +13,19 @@
     ## regroup tasks
     $regroup_task = array();
     $group_name   = "New Requests";
-    foreach($tasks as $etask):
-        if(in_array($etask["completed"], $statuses )):
-            if(substr_count($etask["name"],"*")==4):
-                $group_name = $etask["name"];
-            else:
-                $regroup_task[$group_name][] = $etask;
+
+    if(!empty($tasks)):
+        foreach($tasks as $etask):
+            if(in_array($etask["completed"], $statuses )):
+                if(substr_count($etask["name"],"*")==4):
+                    $group_name = $etask["name"];
+                else:
+                    $regroup_task[$group_name][] = $etask;
+                endif;
+                
             endif;
-            
-        endif;
-    endforeach;
+        endforeach;
+    endif; //if(!empty($tasks)):
     ## end regroup tasks
 
     $i = 0;
