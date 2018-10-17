@@ -53,51 +53,53 @@
                         
                         <tbody>
                             <?php 
-                            foreach($tasks as $etask):
-                                if(in_array($etask["completed"], $statuses )):
-                                ?>
-                                <tr class="btn-with-act" data-toggle="quickview" data-toggle-element="#quickview" data-act="open_quickview" data-taskid="<?php echo $etask["id"];?>" style="cursor:pointer">
-                                    <td>
-                                        <?php 
-                                        $is_section   = false;
-                                        
-                                        if( sizeof($etask["memberships"]) >= 2 ):
-                                            App\Asana::set_task_id($etask["id"]);
-                                            $full_details = App\Asana::get_task_details();
-                                        else:
-                                            $full_details = false;
-                                        endif;
-                                        #debug($full_details);
-
-                                        foreach($sections as $esec):
-                                            if($esec["id"]==$etask["id"]) $is_section = true;
-                                        endforeach;
-
-                                        if( $is_section ):
-                                            echo "<h6>".$etask["name"]."</h6>";
-                                        else:
-                                            echo $etask["name"];
-                                        endif;
-                                        ?>
-                                    </td>
-                                    <td>
-                                        <div class="pull-right">
+                            if(!empty($tasks)):
+                                foreach($tasks as $etask):
+                                    if(in_array($etask["completed"], $statuses )):
+                                    ?>
+                                    <tr class="btn-with-act" data-toggle="quickview" data-toggle-element="#quickview" data-act="open_quickview" data-taskid="<?php echo $etask["id"];?>" style="cursor:pointer">
+                                        <td>
                                             <?php 
-                                            if($etask["completed"]):
-                                                echo "<span class='badge badge-success'>Completed</span>";
+                                            $is_section   = false;
+                                            
+                                            if( sizeof($etask["memberships"]) >= 2 ):
+                                                App\Asana::set_task_id($etask["id"]);
+                                                $full_details = App\Asana::get_task_details();
+                                            else:
+                                                $full_details = false;
                                             endif;
+                                            #debug($full_details);
 
-                                            if(!empty($full_details["memberships"][1])):
-                                                echo "<span class='badge badge-success'>".$full_details["memberships"][1]["section"]["name"]."</span>";
+                                            foreach($sections as $esec):
+                                                if($esec["id"]==$etask["id"]) $is_section = true;
+                                            endforeach;
+
+                                            if( $is_section ):
+                                                echo "<h6>".$etask["name"]."</h6>";
+                                            else:
+                                                echo $etask["name"];
                                             endif;
                                             ?>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <?php
-                                endif;
-                            
-                            endforeach;
+                                        </td>
+                                        <td>
+                                            <div class="pull-right">
+                                                <?php 
+                                                if($etask["completed"]):
+                                                    echo "<span class='badge badge-success'>Completed</span>";
+                                                endif;
+
+                                                if(!empty($full_details["memberships"][1])):
+                                                    echo "<span class='badge badge-success'>".$full_details["memberships"][1]["section"]["name"]."</span>";
+                                                endif;
+                                                ?>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <?php
+                                    endif;
+                                
+                                endforeach;
+                            endif; #if(!empty($tasks)):
                             ?>
                         </tbody>
                     </table>
