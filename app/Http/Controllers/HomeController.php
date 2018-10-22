@@ -77,7 +77,11 @@ class HomeController extends Controller
                 Asana::set_task_id($taskid);
                 $data["task_details"] = Asana::get_task_details();
                 $data["stories"]      = Asana::get_task_stories();
-
+                //Remove anytext in enclosed <internal></internal> tags
+                $notes = $data["task_details"]["notes"] ;
+                $notes = preg_replace('/<internal>[\s\S]+?<\/internal>/', '', $notes);
+                $data["task_details"]["notes"] = $notes;
+               
                 return view("pages.asana.task_details", $data);
             break; //task_details
 
