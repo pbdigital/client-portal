@@ -52,11 +52,13 @@ class Asana
     } //set_task_id
 
     public static function get_tasks(){
-        $url  = "projects/".self::$project_id."/tasks?opt_expand=memberships";
-        $url .= ",workspace,parent,id,assignee,assignee_status,external,name,created_at,completed,completed_at";
-        $url .= ",due_at,due_on,followers,hearted,hearts,modified_at,notes,num_hearts,projects&opt_fields=workspace,";
-        $url .= "memberships,id,assignee,external,name,parent,created_at,assignee_status,completed,completed_at,due_on";
-        $url .= ",due_at,followers,hearted,modified_at,hearts,notes,num_hearts,projects";
+        $url  = "projects/".self::$project_id."/tasks?opt_expand=memberships,id,name,completed";
+        $url .= "&opt_fields=id,memberships,name,completed";
+        //        $url .= ",workspace,parent,id,assignee,assignee_status,external,name,created_at,completed,completed_at";
+
+//        $url .= ",due_at,due_on,followers,hearted,hearts,modified_at,notes,num_hearts,projects&opt_fields=workspace,";
+      //  $url .= "memberships,id,assignee,external,name,parent,created_at,assignee_status,completed,completed_at,due_on";
+       // $url .= ",due_at,followers,hearted,modified_at,hearts,notes,num_hearts,projects";
 
         self::$url = $url;
         return self::api_send();

@@ -66,18 +66,18 @@
                                             $is_section   = false;
                                             
                                             if( sizeof($etask["memberships"]) >= 2 ):
-                                                App\Asana::set_task_id($etask["id"]);
-                                                $full_details = App\Asana::get_task_details();
+                                                #Turning this off as it's causing long load times. Approx 22 sec instead of < 5 -7 secs
+                                                //App\Asana::set_task_id($etask["id"]);
+                                                //$full_details = App\Asana::get_task_details();
+                                                $full_details = false;
                                             else:
                                                 $full_details = false;
                                             endif;
                                             #debug($full_details);
-                                            
-                                            if(!empty($sections)):
-                                                foreach($sections as $esec):
-                                                    if($esec["id"]==$etask["id"]) $is_section = true;
-                                                endforeach;
-                                            endif;
+
+                                            foreach($sections as $esec):
+                                                if($esec["id"]==$etask["id"]) $is_section = true;
+                                            endforeach;
 
                                             if( $is_section ):
                                                 echo "<h6>".$etask["name"]."</h6>";

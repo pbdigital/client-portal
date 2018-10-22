@@ -49,7 +49,6 @@ class HomeController extends Controller
                 $data["tasks"]    = Asana::get_tasks();
                 $data["sections"] = Asana::get_sections();
                 $data["project"]  = Asana::get_project_details();
-
                 return view("pages.asana.projects", $data);
             break; // load_project
 
