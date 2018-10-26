@@ -60,7 +60,8 @@ class HomeController extends Controller
             case "save_new_task":
                 $project_id = User::get_user_asana_project_id();
                 ClickUp::set_project_id($project_id);
-                
+                $list_id = User::get_user_clickup_list_id();
+                ClickUp::set_list_id($list_id);
                 $args["name"]  = $request->input("request_title");
                 $args["notes"] = $request->input("description");
                 $args["files"] = $request->input("files");

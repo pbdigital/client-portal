@@ -5,6 +5,7 @@ class ClickUp
 {
     static $url;
     static $project_id;
+    static $list_id;
     static $task_id;
     static $api_url = "https://api.clickup.com/api/v1/";
     static $bearer = "45d42d427dcd10b57278749d3071a231d94d5491";
@@ -46,6 +47,10 @@ class ClickUp
     public static function set_project_id($project_id){
         self::$project_id = $project_id;
     } //set_project_id
+    
+    public static function set_list_id($list_id){
+        self::$list_id = $list_id;
+    } //set_list_id
 
     public static function set_task_id($task_id){
         self::$task_id = $task_id;
@@ -109,7 +114,7 @@ class ClickUp
         $content = $args['notes'];
         $ch = curl_init();
 
-        curl_setopt($ch, CURLOPT_URL,self::$api_url."list/352369/task");
+        curl_setopt($ch, CURLOPT_URL,self::$api_url."list/".self::$list_id."/task");
         curl_setopt($ch, CURLOPT_POST, true);
         curl_setopt($ch, CURLOPT_POSTFIELDS, "{
             \"name\": \"$name\",
