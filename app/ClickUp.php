@@ -105,16 +105,20 @@ class ClickUp
     }
 
     public static function create_task($args){
-        
+        $name = $args['name'];
+        $content = $args['notes'];
         $ch = curl_init();
 
-        curl_setopt($ch, CURLOPT_URL,self::$api_url."tasks");
-        curl_setopt($ch, CURLOPT_POST, 1);
-        curl_setopt($ch, CURLOPT_POSTFIELDS,"name=".urlencode($args["name"])."&notes=".urlencode($args["notes"])."&projects=".self::$project_id);
+        curl_setopt($ch, CURLOPT_URL,self::$api_url."list/352369/task");
+        curl_setopt($ch, CURLOPT_POST, true);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, "{
+            \"name\": \"$name\",
+            \"content\": \"$content\"
+          }");
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 
         $headers = array();
-        $headers[] = "Accept: application/json";
+        $headers[] = "Content-Type: application/json";
         $headers[] = "Authorization: ".self::$bearer;
         curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
 
@@ -123,9 +127,10 @@ class ClickUp
         curl_close ($ch);
 
         $server_output = json_decode($server_output, true);
-        $response      = $server_output["data"];
 
-        $task_id  = $response["id"];
+         $response      = $server_output;
+
+       $task_id  = $response["id"];
 
         
         // task file attachments

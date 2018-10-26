@@ -38,9 +38,9 @@
     ## end regroup tasks
     $i = 0;
     $tasks = $sections;
-
+    
     foreach($tasks as $k=>$task):
-
+    
     ?>
         <div class="card" style="margin:10px 0px">
             <div class="card-header">
