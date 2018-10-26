@@ -71,7 +71,7 @@
            
                                 foreach($tasks[$k]['task'] as $etask):
                                     ?>
-                                    <tr class="btn-with-act" data-toggle="quickview" data-toggle-element="#quickview" data-act="open_quickview" data-taskid="" style="cursor:pointer">
+                                    <tr class="btn-with-act" data-toggle="" data-toggle-element="#quickview" data-act="open_quickview" data-taskid="" >
                                         <td>
                                             <?php 
                                                 echo $etask['name'];
