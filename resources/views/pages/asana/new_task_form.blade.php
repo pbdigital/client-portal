@@ -8,14 +8,14 @@
         <label>Description</label>
         <textarea style="height:200px;" class="form-control" name="description"></textarea>
     </div>
-    <div class="hdn-task-files"></div>
+    <!-- <div class="hdn-task-files"></div> -->
 </form>
 
-<form action="/file-upload" class="dropzone no-margin">
+<!-- <form action="/file-upload" class="dropzone no-margin">
     <div class="fallback">
         <input name="file" type="file" multiple/>
     </div>
-</form>
+</form> -->
 
 
-<button type="button" class="btn btn-primary btn-with-act" data-act="save_new_task">Save</button>
+<button type="button" class="btn btn-primary btn-with-act" data-act="save_new_task">Create New Request</button>

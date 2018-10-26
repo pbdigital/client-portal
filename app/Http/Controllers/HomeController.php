@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Asana;
+use App\ClickUp;
 use App\User;
 use App\Helper;
 
@@ -45,10 +45,11 @@ class HomeController extends Controller
                 $user_id    = \AUTH::user()->id;
                 $project_id = User::get_user_asana_project_id();
 
-                Asana::set_project_id($project_id);
-                $data["tasks"]    = Asana::get_tasks();
-                $data["sections"] = Asana::get_sections();
-                $data["project"]  = Asana::get_project_details();
+                ClickUp::set_project_id($project_id);
+                $data["sections"] = ClickUp::get_sections();
+                $data["tasks"]    = ClickUp::get_tasks();
+                $data["project_id"] = $project_id;
+              //  $data["project"]  = ClickUp::get_project_details();
                 return view("pages.asana.projects", $data);
             break; // load_project
 
@@ -58,14 +59,14 @@ class HomeController extends Controller
 
             case "save_new_task":
                 $project_id = User::get_user_asana_project_id();
-                Asana::set_project_id($project_id);
+                ClickUp::set_project_id($project_id);
                 
                 $args["name"]  = $request->input("request_title");
                 $args["notes"] = $request->input("description");
                 $args["files"] = $request->input("files");
 
                 
-                Asana::create_task( $args );
+                ClickUp::create_task( $args );
               
             break; //save_new_task
 
@@ -73,9 +74,9 @@ class HomeController extends Controller
             case "task_details":
                 $taskid = $request->input("taskid");
                 
-                Asana::set_task_id($taskid);
-                $data["task_details"] = Asana::get_task_details();
-                $data["stories"]      = Asana::get_task_stories();
+                ClickUp::set_task_id($taskid);
+                $data["task_details"] = ClickUp::get_task_details();
+                $data["stories"]      = ClickUp::get_task_stories();
                 //Remove anytext in enclosed <internal></internal> tags
                 $notes = $data["task_details"]["notes"] ;
                 $notes = preg_replace('/<internal>[\s\S]+?<\/internal>/', '', $notes);
@@ -88,7 +89,7 @@ class HomeController extends Controller
                 $args["text"]    = $request->input("text");
                 $args["task_id"] = $request->input("taskid");
 
-                Asana::post_comment($args);
+                ClickUp::post_comment($args);
             break; // post comment
 
         endswitch;

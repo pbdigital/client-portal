@@ -10,26 +10,37 @@
 <?php 
     $statuses = array("");
 
+
     ## regroup tasks
     $regroup_task = array();
     $group_name   = "New Requests";
-
+   
+    foreach ($sections['projects'] as $k=>$project)
+    {
+        if ($project['id'] == $project_id)
+        {
+            $sections = array();
+            foreach ($project['lists'] as $list)
+            {
+                $sections[$list['id']]['name'] = $list['name'];
+                $sections[$list['id']]['id'] = $list['id'];
+            }
+        }
+    }
+ 
     if(!empty($tasks)):
-        foreach($tasks as $etask):
-            if(in_array($etask["completed"], $statuses )):
-                if(substr_count($etask["name"],"*")==4):
-                    $group_name = $etask["name"];
-                else:
-                    $regroup_task[$group_name][] = $etask;
-                endif;
-                
-            endif;
+        foreach($tasks['tasks'] as $etask):
+             $list = $etask['list']['id'];
+             $sections[$list]['task'][] = array('name'=> $etask['name'], 'status' => $etask['status']);
+             
         endforeach;
     endif; //if(!empty($tasks)):
     ## end regroup tasks
-
     $i = 0;
-    foreach($regroup_task as $group_name=>$tasks):
+    $tasks = $sections;
+    
+    foreach($tasks as $k=>$task):
+    
     ?>
         <div class="card" style="margin:10px 0px">
             <div class="card-header">
@@ -44,7 +55,7 @@
                         <i class="fa fa-angle-up"></i>
                         <i class="fa fa-angle-down" style="display:none"></i>
                 </button>
-                <div class="card-title" style="margin:0px; padding:0px"><?php echo $group_name;?></div>
+                <div class="card-title" style="margin:0px; padding:0px"><?php echo $task['name'];?></div>
                 
                 
                 
@@ -56,52 +67,25 @@
                         
                         <tbody>
                             <?php 
-                            if(!empty($tasks)):
-                                foreach($tasks as $etask):
-                                    if(in_array($etask["completed"], $statuses )):
+                            if(!empty($tasks[$k]['task'])):
+           
+                                foreach($tasks[$k]['task'] as $etask):
                                     ?>
-                                    <tr class="btn-with-act" data-toggle="quickview" data-toggle-element="#quickview" data-act="open_quickview" data-taskid="<?php echo $etask["id"];?>" style="cursor:pointer">
+                                    <tr class="btn-with-act" data-toggle="quickview" data-toggle-element="#quickview" data-act="open_quickview" data-taskid="" style="cursor:pointer">
                                         <td>
                                             <?php 
-                                            $is_section   = false;
-                                            
-                                            if( sizeof($etask["memberships"]) >= 2 ):
-                                                #Turning this off as it's causing long load times. Approx 22 sec instead of < 5 -7 secs
-                                                //App\Asana::set_task_id($etask["id"]);
-                                                //$full_details = App\Asana::get_task_details();
-                                                $full_details = false;
-                                            else:
-                                                $full_details = false;
-                                            endif;
-                                            #debug($full_details);
-
-                                            foreach($sections as $esec):
-                                                if($esec["id"]==$etask["id"]) $is_section = true;
-                                            endforeach;
-
-                                            if( $is_section ):
-                                                echo "<h6>".$etask["name"]."</h6>";
-                                            else:
-                                                echo $etask["name"];
-                                            endif;
+                                                echo $etask['name'];
                                             ?>
                                         </td>
                                         <td>
                                             <div class="pull-right">
                                                 <?php 
-                                                if($etask["completed"]):
-                                                    echo "<span class='badge badge-success'>Completed</span>";
-                                                endif;
-
-                                                if(!empty($full_details["memberships"][1])):
-                                                    echo "<span class='badge badge-success'>".$full_details["memberships"][1]["section"]["name"]."</span>";
-                                                endif;
+                                                    echo "<span class='badge badge-success'>". $etask['status']['status']."</span>";
                                                 ?>
                                             </div>
                                         </td>
                                     </tr>
                                     <?php
-                                    endif;
                                 
                                 endforeach;
                             endif; #if(!empty($tasks)):
