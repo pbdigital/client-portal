@@ -6,7 +6,7 @@
 		<div class="notification-container">
 			<div class="brand inline">
 				<div class="m-l-50">
-					<h4 class="m-l-20"><span class="bold">Clients</span></h4>
+					<a href="<?=url('/');?>"><h4 class="m-l-20"><img src="<?=url('/')?>/public/assets/img/logo.png" alt=""></h4></a>
 				</div> 
 			</div>
 			<!-- START NOTIFICATION LIST -->
@@ -16,15 +16,17 @@
 		<div class="user-container d-flex align-items-center">
 			<!-- START User Info-->
 			<div class="pull-left d-lg-block">
-				
-				<ul class="d-lg-inline-block d-none notification-list no-margin d-lg-inline-block b-grey b-l b-r no-style p-l-30 p-r-20 search-btn" style="margin-right:20px !important">
-				 
+				<input type="text" name="search" placeholder="Search for a task" id="search">			 	
+				<ul class="d-lg-inline-block d-none notification-list no-margin d-lg-inline-block b-grey no-style p-l-30 p-r-20 search-btn" style="margin-right:20px !important">
+				 <li>
+					 	<a href="#"><img src="<?=url("/");?>/public/assets/img/dashboard/icon-plus.png" alt=""></a>
+				 </li>
 					
 				</ul>
 			</div>
 
 			<div class="pull-left p-r-10 fs-14 font-heading d-lg-block d-none">
-				<span class="semi-bold">{{ Auth::user()->name }}</span>
+				<span class="semi-bold username">{{ Auth::user()->name }}</span>
 			</div>
 			<div class="dropdown pull-right d-lg-block d-none">
 				<button class="nav-ellip header-icon pg pg-alt_menu  btn-link m-l-10 sm-no-margin d-inline-block profile-dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

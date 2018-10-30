@@ -29,6 +29,18 @@ class HomeController extends Controller
         if(\Auth::check())
 		{
             
+			return view("pages.index");
+
+		}
+		
+		return redirect(url('/').'/login');	
+    } // index
+
+    public function requests()
+    {
+        if(\Auth::check())
+		{
+            
 			return view("pages.home");
 
 		}

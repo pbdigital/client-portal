@@ -1,9 +1,10 @@
-
-<div class="" style="margin:10px 0px;">
-    <div class="pull-right">
-        <button type="button" class="btn btn-primary btn-sm btn-with-act" data-act="add_new_task">New Request</button>
+<div class="requests-container">
+<div class="req-heading" style="margin:10px 0px;">
+    <h3 class="">New Request <?php #if(!empty($project["name"])) echo $project["name"];?></h3>
+    <div class="">
+        <button id="new-req" type="button" class="btn btn-primary btn-sm btn-with-act" data-act="add_new_task">New Request</button>
     </div>
-    <h3 class="pull-left">Welcome <?php if(!empty($project["name"])) echo $project["name"];?></h3>
+    
 </div>
 <div class="clearfix"> </div>
 
@@ -42,26 +43,31 @@
     foreach($tasks as $k=>$task):
     
     ?>
-        <div class="card" style="margin:10px 0px">
+        <!-- <div class="card" style="margin:20px 0px" data-target="#modalSlideLeft" data-toggle="modal"> -->
+        <div class="card" style="margin:20px 0px">
             <div class="card-header">
-                <button style="padding:5px; background:none; border:none" class="pull-right" 
-                        type="button" 
-                        data-toggle="collapse" 
-                        data-target="#collapse<?php echo $i;?>" 
-                        aria-expanded="false" 
-                        aria-controls="collapse<?php echo $i;?>" 
-                        onclick="$(this).find('.fa').toggle();"
-                        >
-                        <i class="fa fa-angle-up"></i>
-                        <i class="fa fa-angle-down" style="display:none"></i>
-                </button>
+                 <div class="pull-right upper" >
+                    <div class="status"><?php echo "<span class='badge badge-success'>". $etask['status']['status']."</span>"; ?></div>
+                    <div class="time"><img src="<?=url('/');?>/public/assets/img/dashboard/icon-clock.png" alt=""><span>  1h 1m</span></div>
+                    <button style="margin-left:10px;padding:5px; background:none; border:none"
+                            type="button" 
+                            data-toggle="collapse" 
+                            data-target="#collapse<?php echo $i;?>" 
+                            aria-expanded="false" 
+                            aria-controls="collapse<?php echo $i;?>" 
+                            >
+                            <!-- onclick="$(this).find('.fa').toggle();" -->
+                            <i class="fa fa-angle-down" style="display:none"></i>
+                            <i class="fa fa-angle-right"></i>
+                    </button>
+                </div>
                 <div class="card-title" style="margin:0px; padding:0px"><?php echo $task['name'];?></div>
                 
                 
                 
             </div>
             <div class="card-body" style="padding:0px">
-                <div class="collapse show" id="collapse<?php echo $i;?>">
+                <div class="collapse" id="collapse<?php echo $i;?>">
                     <table class="table  ">
                     
                         
@@ -78,7 +84,7 @@
                                             ?>
                                         </td>
                                         <td>
-                                            <div class="pull-right">
+                                            <div class="pull-right" style="display:none;">
                                                 <?php 
                                                     echo "<span class='badge badge-success'>". $etask['status']['status']."</span>";
                                                 ?>
@@ -99,3 +105,4 @@
         $i++;
     endforeach; #foreach($regroup_task as $group_name=>$tasks):
     ?>
+</div>

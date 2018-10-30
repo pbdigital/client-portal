@@ -5,7 +5,7 @@
 	</head>
 	<body class="fixed-header ">
 		<!-- BEGIN SIDEBPANEL-->
-		@include('layouts.sidebar')
+	
 		<!-- END SIDEBPANEL-->
 
 		<!-- START PAGE-CONTAINER -->
@@ -49,7 +49,28 @@
 		@include('layouts.footerscripts')
 		<!-- END PAGE LEVEL JS -->
 
- 
-		
+		<script type="text/javascript">
+			$(document).ready(function(){
+				$(document).on('click','.requests-container .card', function() {
+					$('.requests-container .card').removeClass('active');
+					$(this).addClass('active');
+
+					if($(this).parent().hasClass('active')){
+
+					}else{
+						$(this).parent().addClass('active');
+						$('#modalSlideLeft').modal('show');
+						$('.modal-backdrop').hide();
+						$('body').addClass('scroll-bar-active');
+					}
+				});
+
+				$('#modalSlideLeft').on('hidden.bs.modal', function () {
+					$('.requests-container').removeClass('active');
+					$('body').removeClass('scroll-bar-active');
+				});
+			});
+
+		</script>
 	</body>
 </html>
