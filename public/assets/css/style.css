@@ -397,3 +397,165 @@ body.fixed-header .header {
   background: #f4f4f4 url(../img/dashboard/icon-magnifying.png) no-repeat 10px
     center;
 }
+
+.login-wrap {
+  background: #fff;
+}
+
+.login-wrap .login-wrapper .login-container {
+  margin: 0 auto;
+  width: 100%;
+  float: none;
+}
+
+.login-wrap .sign-in {
+  position: relative;
+  max-width: 500px;
+  margin: 0 auto;
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+  box-shadow: 0 15px 30px 0 rgba(0, 0, 0, 0.11),
+    0 5px 15px 0 rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  padding: 70px 50px 150px;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.sign_in--heading h2 {
+  font-family: "Montserrat";
+  font-size: 36px;
+  color: #ff3f17 !important;
+  text-align: center;
+  font-weight: 600;
+}
+
+.sign_in--heading p {
+  font-family: "Open Sans";
+  font-size: 14px;
+  color: #81858b;
+  text-align: center;
+}
+
+form#loginform {
+  margin-bottom: 30px;
+}
+
+#loginform button {
+  background: #ff3f17 !important;
+  background: -moz-linear-gradient(left, #ff3f17 0%, #ee8f0c 100%) !important;
+  background: -webkit-linear-gradient(
+    left,
+    #ff3f17 0%,
+    #ee8f0c 100%
+  ) !important;
+  background: linear-gradient(to right, #ff3f17 0%, #ee8f0c 100%) !important;
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr="#ff3f17", endColorstr="#ee8f0c", GradientType=1) !important;
+  border: 0;
+  border-radius: 40px;
+  display: block;
+  padding: 10px 50px;
+  font-family: "Montserrat";
+  font-size: 15px;
+  color: #fff;
+  text-transform: uppercase;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  min-height: 50px;
+  margin-bottom: 20px;
+}
+
+.sign-up-social {
+  background: #ff3f17 !important;
+  background: -moz-linear-gradient(left, #ff3f17 0%, #ee8f0c 100%) !important;
+  background: -webkit-linear-grdient(left, #ff3f17 0%, #ee8f0c 100%) !important;
+  background: linear-gradient(to right, #ff3f17 0%, #ee8f0c 100%) !important;
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr="#ff3f17", endColorstr="#ee8f0c", GradientType=1) !important;
+  width: 100%;
+  position: absolute;
+  height: 150px;
+  left: 0;
+}
+
+.sign-up-social p {
+  font-family: "Open Sans";
+  font-size: 14px;
+  color: #fff;
+  text-align: center;
+  margin: 20px auto;
+}
+
+.sign-up-social ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+}
+
+.sign-up-social ul li {
+  width: 100%;
+  margin: 0 10px;
+  max-width: 50px;
+}
+
+.sign-up-social ul li img {
+  width: 100%;
+  height: auto;
+}
+
+#loginform #email {
+  background: #fff url(../img/login/icon-user.png) no-repeat 20px center !important;
+}
+
+#loginform #pw {
+  background: #fff url(../img/login/icon-padlock.png) no-repeat 20px center !important;
+}
+
+.sign_in--heading {
+  margin-bottom: 30px;
+}
+
+#loginform .input-group .form-control {
+  padding: 20px 20px 20px 50px;
+  border-radius: 40px;
+  border: 1px solid #f8f8f8;
+  box-shadow: 0 15px 30px 0 rgba(0, 0, 0, 0.11),
+    0 5px 15px 0 rgba(0, 0, 0, 0.08);
+  margin-bottom: 20px;
+  font-size: 15px;
+  font-family: "Montserrat";
+  font-weight: 400;
+}
+
+.dont-have {
+  font-family: "Open Sans";
+  font-size: 14px !important;
+  color: #81858b;
+  text-align: center;
+}
+
+.dont-have a {
+  color: #262626;
+  font-weight: 600;
+}
+
+@media only screen and (max-width: 1024px) {
+  .login-wrap .sign-in {
+    top: auto;
+    transform: none;
+  }
+  .login-wrap .login-wrapper .login-container {
+    margin: 50px auto 200px;
+    padding: 0 15px;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .login-wrap .sign-in {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+}
