@@ -51,18 +51,19 @@
 
 		<script type="text/javascript">
 			$(document).ready(function(){
-				$(document).on('click','.requests-container .card', function() {
-					$('.requests-container .card').removeClass('active');
+				$(document).on('click','.requests-container .card .card--inner', function() {
+					$('.requests-container .card .card--inner').removeClass('active');
 					$(this).addClass('active');
+					$('#modalSlideLeft').modal('show');
+					$(this).parent().parent().addClass('active');
+					// if($(this).parent().hasClass('active')){
 
-					if($(this).parent().hasClass('active')){
-
-					}else{
-						$(this).parent().addClass('active');
-						$('#modalSlideLeft').modal('show');
+					// }else{
+					// 	$(this).find('.card--inner').addClass('active');
+						
 						$('.modal-backdrop').hide();
 						$('body').addClass('scroll-bar-active');
-					}
+					// }
 				});
 
 				$('#modalSlideLeft').on('hidden.bs.modal', function () {

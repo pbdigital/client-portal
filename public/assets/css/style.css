@@ -102,17 +102,24 @@ body.fixed-header .header {
 
 .requests-container .card {
   border-radius: 4px;
-  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
+  background: #fafafa;
+  border: 0;
+  position: relative;
+  z-index: 1060;
 }
 
 .requests-container .card.active {
-  border: 1px solid #ff4d00;
+  /* border: 1px solid #ff4d00; */
 }
 
-.requests-container.active .card {
-  width: 50%;
-  position: relative;
-  z-index: 1060;
+.card--inner {
+  background: #fff;
+  margin-bottom: 20px;
+  border-radius: 4px;
+}
+
+.card--inner.active {
+  border: 1px solid #ff4d00;
 }
 
 /* .modal-backdrop.show {
@@ -124,6 +131,7 @@ body.fixed-header .header {
   border-left: 5px solid #ff4d00;
   padding: 25px 30px;
   cursor: pointer;
+  background: #fff;
 }
 
 .requests-container .card .card-header .card-title {
@@ -131,7 +139,7 @@ body.fixed-header .header {
   font-size: 18px;
   color: #262626;
   font-weight: 400;
-  width: 60%;
+  width: 80%;
 }
 
 .requests-container .card .card-header .upper {
@@ -542,6 +550,20 @@ form#loginform {
   font-weight: 600;
 }
 
+@media only screen and (max-width: 1800px) {
+  .requests-container.active .card {
+    width: 70%;
+    position: relative;
+    z-index: 1060;
+  }
+}
+
+@media only screen and (max-width: 1600px) {
+  .requests-container.active .card {
+    width: 60%;
+  }
+}
+
 @media only screen and (max-width: 1024px) {
   .login-wrap .sign-in {
     top: auto;
@@ -550,6 +572,12 @@ form#loginform {
   .login-wrap .login-wrapper .login-container {
     margin: 50px auto 200px;
     padding: 0 15px;
+  }
+  .requests-container .card .card-header .card-title {
+    width: 70%;
+  }
+  .requests-container.active .card {
+    width: 48%;
   }
 }
 
