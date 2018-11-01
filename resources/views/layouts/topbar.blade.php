@@ -16,13 +16,13 @@
 		<div class="user-container d-flex align-items-center">
 			<!-- START User Info-->
 			<div class="pull-left d-lg-block">
-				<input type="text" name="search" placeholder="Search for a task" id="search">			 	
-				<ul class="d-lg-inline-block d-none notification-list no-margin d-lg-inline-block b-grey no-style p-l-30 p-r-20 search-btn" style="margin-right:20px !important">
+				<!-- <input type="text" name="search" placeholder="Search for a task" id="search">			 	 -->
+				<!-- <ul class="d-lg-inline-block d-none notification-list no-margin d-lg-inline-block b-grey no-style p-l-30 p-r-20 search-btn" style="margin-right:20px !important">
 				 <li>
 					 	<a href="#"><img src="<?=url("/");?>/public/assets/img/dashboard/icon-plus.png" alt=""></a>
 				 </li>
 					
-				</ul>
+				</ul> -->
 			</div>
 
 			<div class="pull-left p-r-10 fs-14 font-heading d-lg-block d-none">

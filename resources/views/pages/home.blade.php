@@ -54,7 +54,7 @@
 				$(document).on('click','.requests-container .card .card--inner', function() {
 					$('.requests-container .card .card--inner').removeClass('active');
 					$(this).addClass('active');
-					$('#modalSlideLeft').modal('show');
+					//$('#modalSlideLeft').modal('show');
 					$(this).parent().parent().addClass('active');
 					// if($(this).parent().hasClass('active')){
 

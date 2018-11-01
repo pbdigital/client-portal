@@ -105,7 +105,7 @@ body.fixed-header .header {
   background: #fafafa;
   border: 0;
   position: relative;
-  z-index: 1060;
+  /* z-index: 1060; */
 }
 
 .requests-container .card.active {
