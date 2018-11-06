@@ -13,6 +13,7 @@
 			
 			<!-- END NOTIFICATIONS LIST -->
 		</div>
+		<a href='{{url("/")}}'><i style="font-size: 30px;color: #ff3f00;" class="pg-home"></i> </a>
 		<div class="user-container d-flex align-items-center">
 			<!-- START User Info-->
 			<div class="pull-left d-lg-block">
@@ -33,7 +34,7 @@
 				
 				</button>
 				<div class="dropdown-menu dropdown-menu-right profile-dropdown" role="menu">
-					<a href="{{url("/")}}/meeting" class="dropdown-item"><i class="pg-settings_small"></i> Book a Meeting</a>
+					<a href='{{url("/")}}/meeting' class="dropdown-item"><i class="pg-settings_small"></i> Book a Meeting</a>
 
 					<a href="<?=url('/')?>/logout" class="clearfix bg-master-lighter dropdown-item">
 						<span class="pull-left">Logout</span>

@@ -17,7 +17,7 @@
                 <div class="modal-header clearfix text-center">
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i class="pg-close fs-20"></i>
                     </button>
-                    <h3><?php echo ((isset($_GET['type']) && $_GET['type']== "urgent") ? 'Urgent' : 'New');?> Request</h3>
+                    <h3>Make <?php echo ((isset($_GET['type']) && $_GET['type']== "urgent") ? 'An Urgent' : 'A New');?> Request</h3>
                 </div>
                 <div class="modal-body">
                     

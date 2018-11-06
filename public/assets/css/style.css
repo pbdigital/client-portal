@@ -552,7 +552,8 @@ form#loginform {
 
 @media only screen and (max-width: 1800px) {
   .requests-container.active .card {
-    width: 70%;
+    /* width: 70%; */
+    width: 100%;
     position: relative;
     z-index: 1060;
   }
@@ -560,7 +561,8 @@ form#loginform {
 
 @media only screen and (max-width: 1600px) {
   .requests-container.active .card {
-    width: 60%;
+    /* width: 60%; */
+    width: 100%;
   }
 }
 
@@ -577,7 +579,8 @@ form#loginform {
     width: 70%;
   }
   .requests-container.active .card {
-    width: 48%;
+    /* width: 48%; */
+    width: 100%;
   }
 }
 
