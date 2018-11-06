@@ -14,7 +14,7 @@
         <div class="sign-in">
           <div class="sign_in--heading">
             <h2 class="text-center">LOGIN</h2>
-            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Atque, vero!</p>
+            <!-- <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Atque, vero!</p> -->
           </div>
           
           <!-- START Login Form -->
@@ -51,19 +51,19 @@
              <div class="row">
            
            <div class="col-md-12 d-flex align-items-center justify-content-center">
-             <p class="dont-have">Don't have an account? <a href="#" class="text-info small">Sign Up Now!</a></p>
+             <!-- <p class="dont-have">Don't have an account? <a href="#" class="text-info small">Sign Up Now!</a></p> -->
            </div>
          </div>
          <!-- END Form Control-->
           </form>
           <!--END Login Form-->
          <div class="sign-up-social text-center">
-           <p>Sign Up with Social Media</p>
+           <!-- <p>Sign Up with Social Media</p>
             <ul>
               <li><a href="#"><img src="<?=url("/")?>/public/assets/img/login/icon-fb.png" alt="" srcset=""></a></li>
               <li><a href="#"><img src="<?=url("/")?>/public/assets/img/login/icon-twitter.png" alt="" srcset=""></a></li>
               <li><a href="#"><img src="<?=url("/")?>/public/assets/img/login/icon-insta.png" alt="" srcset=""></a></li>
-            </ul>
+            </ul> -->
          </div>
         </div>
       </div>

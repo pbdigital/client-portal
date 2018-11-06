@@ -98,4 +98,15 @@
     <?php 
     endforeach; #foreach($regroup_task as $group_name=>$tasks):
     ?>
+    <?php
+    if (isset($_GET['type'])):
+    ?>
+        <script>
+            $(document).ready(function(){
+                $('#new-req').click();
+            });
+        </script>
+    <?php
+    endif;
+    ?>
 </div>

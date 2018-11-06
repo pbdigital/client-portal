@@ -1,7 +1,19 @@
 var clientsAutomation = {}
 var loader = '<div class="" style="padding:40px; text-align:center; padding-top:0px;"><div class="progress-circle-indeterminate  progress-circle-primary m-t-45" style="" data-color="primary"></div></div>';
+var getUrlParameter = function getUrlParameter(sParam) {
+    var sPageURL = window.location.search.substring(1),
+        sURLVariables = sPageURL.split('&'),
+        sParameterName,
+        i;
 
+    for (i = 0; i < sURLVariables.length; i++) {
+        sParameterName = sURLVariables[i].split('=');
 
+        if (sParameterName[0] === sParam) {
+            return sParameterName[1] === undefined ? true : decodeURIComponent(sParameterName[1]);
+        }
+    }
+};
 $(document).ready(function(){
 
     clientsAutomation = {
@@ -9,10 +21,13 @@ $(document).ready(function(){
         asana : {
     
             loadProject : function(e){
+                var type = getUrlParameter('type');
+                console.log(type);
                 $.ajax({
                     url : clientsAutomationbaseUrl + "/home_ajax",
                     data : {
                         task : "load_project",
+                        type: type
                     },
                     headers: {
                         'X-CSRF-Token': $('meta[name="_token"]').attr('content')
@@ -27,7 +42,18 @@ $(document).ready(function(){
             },
 
             frmAddNewTask : function(e){
-                clientsAutomation.modalOpen({ title: "New Request", content : "<div class='div-new-request' style='max-height:80vh; overflow:auto'>"+loader+"</div>","size" : "modal-lg" });
+                var type = getUrlParameter('type');
+                var title = '';
+                if (type == 'urgent')
+                {
+                    title = 'Urgent Request';
+                }
+                else
+                {
+                    title = 'New Request';
+                }
+                title = 'hello';
+                clientsAutomation.modalOpen({ title: title, content : "<div class='div-new-request' style='max-height:80vh; overflow:auto'>"+loader+"</div>","size" : "modal-lg" });
                 $.ajax({
                     url : clientsAutomationbaseUrl + "/home_ajax",
                     data : {

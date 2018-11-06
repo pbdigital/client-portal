@@ -426,7 +426,7 @@ body.fixed-header .header {
   box-shadow: 0 15px 30px 0 rgba(0, 0, 0, 0.11),
     0 5px 15px 0 rgba(0, 0, 0, 0.08);
   overflow: hidden;
-  padding: 70px 50px 150px;
+  padding: 70px 50px 50px;
   border-radius: 20px;
   overflow: hidden;
 }
@@ -482,7 +482,7 @@ form#loginform {
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr="#ff3f17", endColorstr="#ee8f0c", GradientType=1) !important;
   width: 100%;
   position: absolute;
-  height: 150px;
+  height: 50px;
   left: 0;
 }
 
