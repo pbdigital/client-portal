@@ -4,9 +4,7 @@
 		@include('layouts.header')
 	</head>
 	<body class="fixed-header ">
-		<!-- BEGIN SIDEBPANEL-->
-		@include('layouts.sidebar')
-		<!-- END SIDEBPANEL-->
+		
 
 		<!-- START PAGE-CONTAINER -->
 		<div class="page-container ">
@@ -20,7 +18,10 @@
 				<div class="content ">
 					<!-- START CONTAINER FLUID -->
 					<div class=" container-fluid   container-fixed-lg"  >
-                            <iframe src="https://automationsuccess.youcanbook.me/?noframe=true&skipHeaderFooter=true" id="ycbmiframeautomationsuccess" style="width:100%;height:1000px;border:0px;background-color:transparent;" frameborder="0" allowtransparency="true"></iframe><script>window.addEventListener && window.addEventListener("message", function(event){if (event.origin === "https://automationsuccess.youcanbook.me"){document.getElementById("ycbmiframeautomationsuccess").style.height = event.data + "px";}}, false);</script>
+                            <!-- Calendly inline widget begin -->
+<div class="calendly-inline-widget" data-url="https://calendly.com/pbdigital" style="min-width:320px;height:80vh;"></div>
+<script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js"></script>
+<!-- Calendly inline widget end -->
 					</div>
 					<!-- END CONTAINER FLUID -->
 				</div> <!-- .content -->
