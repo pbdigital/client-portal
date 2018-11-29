@@ -31,7 +31,7 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-    static function get_user_asana_project_id(){
+    static function get_user_project_id(){
         $user_id = \AUTH::user()->id;
         #\App\Helper::debug($user_id);
         $result  = DB::table("users")
@@ -40,29 +40,14 @@ class User extends Authenticatable
                     ->get();
 
 
-        if(!empty($result[0]->clickup_project_id)):
-            return $result[0]->clickup_project_id;
+        if(!empty($result[0]->project_id)):
+            return $result[0]->project_id;
         else:   
             return false;
         endif;
         
-    } // get_useR_asana_project_id
-    static function get_user_clickup_list_id(){
-        $user_id = \AUTH::user()->id;
-        #\App\Helper::debug($user_id);
-        $result  = DB::table("users")
-                    ->select("*")
-                    ->where("id", $user_id)
-                    ->get();
+    } // get_useR_project_id
 
-
-        if(!empty($result[0]->clickup_list_id)):
-            return $result[0]->clickup_list_id;
-        else:   
-            return false;
-        endif;
-        
-    } // get_user_clickup_list_id(
     static function get_users(){
         $users = DB::select(" SELECT * FROM `users` INNER JOIN user_asana_projects ON `users`.`id` = user_asana_projects.user_id  ");
         return $users;

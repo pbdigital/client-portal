@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\ClickUp;
+use App\TargetProcess;
 use App\User;
 use App\Helper;
 
@@ -55,14 +55,43 @@ class HomeController extends Controller
 
             case "load_project":
                 $user_id    = \AUTH::user()->id;
-                $project_id = User::get_user_asana_project_id();
+                $project_id = User::get_user_project_id();
 
-                ClickUp::set_project_id($project_id);
-                $data["sections"] = ClickUp::get_sections();
-                $data["tasks"]    = ClickUp::get_tasks();
-                $data["project_id"] = $project_id;
-              //  $data["project"]  = ClickUp::get_project_details();
-                return view("pages.asana.projects", $data);
+                TargetProcess::set_project_id($project_id);
+                $data = TargetProcess::get_everything();
+                $features = array();
+                foreach ($data['Features']['Items'] as $feature)
+                {
+                    $id = $feature['Id'];
+                    $features[$id] = $feature;
+                }
+                foreach ($data['UserStories']['Items'] as $userstory)
+                {
+                    if (isset($userstory['Feature']['Id']))
+                    {
+                        $feature_id = $userstory['Feature']['Id'];
+                    }
+                    else
+                    {
+                        $feature_id = 0;
+                    }
+                    $features[$feature_id]['Tasks'][] = $userstory;
+                }
+                foreach ($data['Bugs']['Items'] as $bug)
+                {
+                    if (isset($bug['Feature']['Id']))
+                    {
+                        $feature_id = $bug['Feature']['Id'];
+                    }
+                    else
+                    {
+                        $feature_id = 0;
+                    }
+                    $features[$feature_id]['Tasks'][] = $bug;
+                }
+                $features = array_reverse($features);
+
+                return view("pages.asana.projects", array('data'=>$features));
             break; // load_project
 
             case "new_task_form":
@@ -70,16 +99,13 @@ class HomeController extends Controller
             break; // new_task_form
 
             case "save_new_task":
-                $project_id = User::get_user_asana_project_id();
-                ClickUp::set_project_id($project_id);
-                $list_id = User::get_user_clickup_list_id();
-                ClickUp::set_list_id($list_id);
+                $project_id = User::get_user_project_id();
+                $args["project_id"]  = $project_id;
                 $args["name"]  = $request->input("request_title");
                 $args["notes"] = $request->input("description");
                 $args["files"] = $request->input("files");
-
                 
-                ClickUp::create_task( $args );
+                TargetProcess::create_task( $args );
               
             break; //save_new_task
 
@@ -87,9 +113,9 @@ class HomeController extends Controller
             case "task_details":
                 $taskid = $request->input("taskid");
                 
-                ClickUp::set_task_id($taskid);
-                $data["task_details"] = ClickUp::get_task_details();
-                $data["stories"]      = ClickUp::get_task_stories();
+                TargetProcess::set_task_id($taskid);
+                $data["task_details"] = TargetProcess::get_task_details();
+                $data["stories"]      = TargetProcess::get_task_stories();
                 //Remove anytext in enclosed <internal></internal> tags
                 $notes = $data["task_details"]["notes"] ;
                 $notes = preg_replace('/<internal>[\s\S]+?<\/internal>/', '', $notes);
@@ -102,7 +128,7 @@ class HomeController extends Controller
                 $args["text"]    = $request->input("text");
                 $args["task_id"] = $request->input("taskid");
 
-                ClickUp::post_comment($args);
+                TargetProcess::post_comment($args);
             break; // post comment
 
         endswitch;
