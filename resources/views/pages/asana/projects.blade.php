@@ -80,7 +80,7 @@
                                     </button>
                                 </div>
                                 <div class="card-title" style="margin:0px; padding:0px">
-                                    More Items Coming Soon
+                                    No Tasks Listed In This Section Yet
                                 </div>
                             </div>
                             <div class="card-body" style="padding:0 15px;">
