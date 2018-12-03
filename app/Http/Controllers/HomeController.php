@@ -7,6 +7,9 @@ use App\TargetProcess;
 use App\User;
 use App\Helper;
 
+
+
+
 class HomeController extends Controller
 {
     /**
@@ -18,7 +21,11 @@ class HomeController extends Controller
     {
         $this->middleware('auth');
     }
-
+    function priority_sort( $a, $b ){
+        $p1 = $a['NumericPriority'];
+        $p2 = $b['NumericPriority'];
+        return (float)$p1 > (float)$p2;
+    }
     /**
      * Show the application dashboard.
      *
@@ -50,7 +57,6 @@ class HomeController extends Controller
 
     public function home_ajax(Request $request){
         $task = $request->input("task");
-
         switch($task):
 
             case "load_project":
@@ -59,12 +65,15 @@ class HomeController extends Controller
 
                 TargetProcess::set_project_id($project_id);
                 $data = TargetProcess::get_everything();
+               
                 $features = array();
+                $features[0]['NumericPriority'] = 0;
                 foreach ($data['Features']['Items'] as $feature)
                 {
                     $id = $feature['Id'];
                     $features[$id] = $feature;
                 }
+                
                 foreach ($data['UserStories']['Items'] as $userstory)
                 {
                     if (isset($userstory['Feature']['Id']))
@@ -77,6 +86,8 @@ class HomeController extends Controller
                     }
                     $features[$feature_id]['Tasks'][] = $userstory;
                 }
+                
+                // exit;
                 foreach ($data['Bugs']['Items'] as $bug)
                 {
                     if (isset($bug['Feature']['Id']))
@@ -89,7 +100,17 @@ class HomeController extends Controller
                     }
                     $features[$feature_id]['Tasks'][] = $bug;
                 }
-                $features = array_reverse($features);
+                //$features = array_reverse($features);
+                foreach ($features as $key=>$feature)
+                {
+                    if (isset($feature['Tasks']))
+                    {
+                        usort( $features[$key]['Tasks'], array(__CLASS__ ,"priority_sort" ));                    
+                    }
+                }
+           
+                usort( $features, array($this ,"priority_sort" ));
+                  
 
                 return view("pages.asana.projects", array('data'=>$features));
             break; // load_project

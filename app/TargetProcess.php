@@ -67,9 +67,10 @@ class TargetProcess
         self::$url = $url;
         return self::api_send();
     }
-    public static function get_everything()
+    public static function get_everything($features = 'EntityState,Name,NumericPriority', $user_stories = 'Feature,Name,EntityState,Description,NumericPriority', $bugs =  'Feature,Name,EntityState,Description,NumericPriority')
     {   
-        $url = "Projects/192?include=[Features[EntityState,Name],UserStories[Feature,Name,EntityState],Bugs[Feature,Name,EntityState]]";
+        $project_id = self::$project_id;
+        $url = "Projects/$project_id?include=[Features[$features],UserStories[$user_stories],Bugs[$bugs]]";
         self::$url = $url;
         return self::api_send();
     }
