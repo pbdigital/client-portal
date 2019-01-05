@@ -26,7 +26,7 @@ class NotificationsController extends Controller
         //dd($users);
         if (isset($user))
         {
-            return json_encode(array('email'=>$user->email));
+            return json_encode(array('email'=>$user->email,'first_name'=>$user->first_name));
         }
         
     }
