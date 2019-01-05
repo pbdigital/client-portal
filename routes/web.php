@@ -10,7 +10,6 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
 Auth::routes();
 
 Route::get('/', 'HomeController@index')->name('home');
@@ -25,6 +24,8 @@ Route::group(['middleware' => ['UserMiddleWare:canaccess']], function() {
 });
 
 Route::get("/meeting", "MeetingsController@index");
+Route::any("get_email/{id}", "NotificationsController@get_email");
+
 #Logout
 Route::get("/logout", function(){
     return View::make("logout");

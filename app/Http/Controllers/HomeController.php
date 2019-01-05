@@ -170,4 +170,8 @@ class HomeController extends Controller
         echo $upload_url;
 
     } // file_upload
+    public function get_email()
+    {
+        return 'test';
+    }
 }

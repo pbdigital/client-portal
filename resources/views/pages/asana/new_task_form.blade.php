@@ -6,6 +6,18 @@
     <div class="form-group">
         <textarea style="height:200px;" id="description" class="form-control" name="description" placeholder="Description"></textarea>
     </div>
+
+    <div class="form-group">
+        <label>Is this urgent?</label>
+        <div class="radio radio-success">
+            <input type="radio" value="yes" name="optionyes" id="yes">
+            <label for="yes">Yes</label>
+            <input type="radio" checked="checked" value="no" name="optionyes" id="no">
+            <label for="no">No</label>
+        </div>
+    </div>
+
+
     <!-- <div class="hdn-task-files"></div> -->
 </form>
 
