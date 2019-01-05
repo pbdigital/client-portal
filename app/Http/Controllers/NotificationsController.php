@@ -24,6 +24,10 @@ class NotificationsController extends Controller
     {
         $user = DB::table('users')->where('project_id', $project_id)->first();
         //dd($users);
-        echo $user->email;
+        if (isset($user))
+        {
+            return json_encode(array('email'=>$user->email));
+        }
+        
     }
 }
