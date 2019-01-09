@@ -126,7 +126,18 @@ class HomeController extends Controller
                 $args["notes"] = $request->input("description");
                 $args["files"] = $request->input("files");
                 
+				
+				
                 TargetProcess::create_task( $args );
+				
+				$tmp_name= $_FILES["file"]["tmp_name"];			
+				TargetProcess::file_upload_2([
+					'project_id'=>$project_id,
+					'files'=>$tmp_name,
+				
+				]);
+				
+				
               
             break; //save_new_task
 
@@ -155,7 +166,9 @@ class HomeController extends Controller
         endswitch;
     } //home_ajax
 
-    public function file_upload(Request $request){
+    
+	public function file_upload(Request $request){
+		
         $uploaded_files = array(); 
         $uploads_dir    = public_path().'/asana_files';
       
@@ -168,8 +181,16 @@ class HomeController extends Controller
         }
 
         echo $upload_url;
-
-    } // file_upload
+		
+		
+	} // file_upload
+	
+	
+	
+	
+	
+	
+	
     public function get_email()
     {
         return 'test';

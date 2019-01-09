@@ -151,4 +151,47 @@ class TargetProcess
         exit;
 
     } // create_task
+	
+	
+	
+	public static function file_upload_2($args){
+		$curl = curl_init();
+
+		curl_setopt_array($curl, array(
+		  CURLOPT_URL => "https://pbdigital.tpondemand.com/UploadFile.ashx",
+		  CURLOPT_RETURNTRANSFER => true,
+		  CURLOPT_ENCODING => "",
+		  CURLOPT_MAXREDIRS => 10,
+		  CURLOPT_TIMEOUT => 30,
+		  CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+		  CURLOPT_CUSTOMREQUEST => "POST",
+		  //CURLOPT_POSTFIELDS => "WebKitFormBoundary7MA4YWxkTrZu0gW\r\nContent-Disposition: form-data; name=\"files[]\"; filename=\"plastiq.jpg\"\r\nContent-Type: image/jpeg\r\n\r\n\r\n------WebKitFormBoundary7MA4YWxkTrZu0gW\r\nContent-Disposition: form-data; name=\"generalId\"\r\n\r\n734\r\n------WebKitFormBoundary7MA4YWxkTrZu0gW--",
+		  
+		  
+		  
+		  CURLOPT_POSTFIELDS => [			
+			'file' => $args['files'],
+			'generalId'=>$args['project_id'],
+		  ],
+		  
+		  CURLOPT_HTTPHEADER => array(
+			"accept: application/json",
+			"authorization: Basic cGF1bEBwYmRpZ2l0YWwuY29tLmF1OlRhYmF0aGEx",
+			"cache-control: no-cache",
+			"content-type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW",
+			"postman-token: 89d962e8-12ce-4a07-d307-dedac4da3576"
+		  ),
+		));
+
+		$response = curl_exec($curl);
+		$err = curl_error($curl);
+
+		curl_close($curl);
+
+		if ($err) {
+		  echo "cURL Error #:" . $err;
+		} else {
+		  echo $args;
+		}
+	}
 }
