@@ -12,7 +12,7 @@
             $i=0;
             @endphp
             @foreach ($data as $feature)
-                @if (isset($feature['EntityState']['Name']) && $feature['EntityState']['Name'] != "Done" || empty($feature['Name']))
+                @if (isset($feature['EntityState']['Name']) && $feature['EntityState']['Name'] != "Closed" || empty($feature['Name']))
                     @isset($feature['Name'])
                         <h4>{{$feature['Name']}}</h4>
                     @else
@@ -20,7 +20,7 @@
                     @endisset
                     @isset($feature['Tasks'])
                         @foreach ($feature['Tasks'] as $task)
-                            @if ($task['EntityState']['Name'] != "Done")
+                            @if ($task['EntityState']['Name'] != "Closed")
                                 <div class="card--inner">
                                     <div class="card-header" 
                                        data-toggle="collapse" 
