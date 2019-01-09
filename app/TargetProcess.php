@@ -137,6 +137,7 @@ class TargetProcess
 
         $headers = array();
         $headers[] = "Content-Type: application/json";
+        $headers[] = "accept: application/json";
         $headers[] = "Authorization: ".self::$bearer;
         curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
 
@@ -147,17 +148,19 @@ class TargetProcess
         $server_output = json_decode($server_output, true);
 
         $response      = $server_output;
-        print_r($server_output);
-        exit;
+        return $response['Id'];
 
     } // create_task
 	
 	
 	
 	public static function file_upload_2($args){
-		$curl = curl_init();
+        $file     = public_path().str_replace(url("/public/"),"", $args['file']);
+        $fileinfo = pathinfo($file);
+        $filetype = mime_content_type($file );
 
-		curl_setopt_array($curl, array(
+        $curl = curl_init();
+        curl_setopt_array($curl, array(
 		  CURLOPT_URL => "https://pbdigital.tpondemand.com/UploadFile.ashx",
 		  CURLOPT_RETURNTRANSFER => true,
 		  CURLOPT_ENCODING => "",
@@ -168,30 +171,25 @@ class TargetProcess
 		  //CURLOPT_POSTFIELDS => "WebKitFormBoundary7MA4YWxkTrZu0gW\r\nContent-Disposition: form-data; name=\"files[]\"; filename=\"plastiq.jpg\"\r\nContent-Type: image/jpeg\r\n\r\n\r\n------WebKitFormBoundary7MA4YWxkTrZu0gW\r\nContent-Disposition: form-data; name=\"generalId\"\r\n\r\n734\r\n------WebKitFormBoundary7MA4YWxkTrZu0gW--",
 		  
 		  
-		  
 		  CURLOPT_POSTFIELDS => [			
-			'file' => $args['files'],
-			'generalId'=>$args['project_id'],
+			'files[]' => new \CURLFile($file, $filetype, $fileinfo["basename"] ),
+			'generalId'=> $args['task_id'],
 		  ],
 		  
 		  CURLOPT_HTTPHEADER => array(
 			"accept: application/json",
 			"authorization: Basic cGF1bEBwYmRpZ2l0YWwuY29tLmF1OlRhYmF0aGEx",
 			"cache-control: no-cache",
-			"content-type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW",
-			"postman-token: 89d962e8-12ce-4a07-d307-dedac4da3576"
-		  ),
+			"content-type: multipart/form-data;"),
 		));
 
 		$response = curl_exec($curl);
 		$err = curl_error($curl);
-
+        \App\Helper::debug($response);
 		curl_close($curl);
-
 		if ($err) {
 		  echo "cURL Error #:" . $err;
 		} else {
-		  echo $args;
 		}
 	}
 }

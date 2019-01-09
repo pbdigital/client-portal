@@ -18,7 +18,7 @@
     </div>
 
 
-    <!-- <div class="hdn-task-files"></div> -->
+  <div class="hdn-task-files"></div>
 </form>
 
  <form action="/file-upload" class="dropzone no-margin">

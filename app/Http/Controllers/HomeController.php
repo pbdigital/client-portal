@@ -125,18 +125,17 @@ class HomeController extends Controller
                 $args["name"]  = $request->input("request_title");
                 $args["notes"] = $request->input("description");
                 $args["files"] = $request->input("files");
-                
 				
 				
-                TargetProcess::create_task( $args );
-				
-				$tmp_name= $_FILES["file"]["tmp_name"];			
-				TargetProcess::file_upload_2([
-					'project_id'=>$project_id,
-					'files'=>$tmp_name,
-				
-				]);
-				
+                $task_id  = TargetProcess::create_task( $args );
+				foreach ($args["files"] as $file )
+				{
+                    echo $file;
+                    TargetProcess::file_upload_2([
+					'task_id'=>$task_id,
+					'file'=>$file,
+				    ]);
+				}
 				
               
             break; //save_new_task
@@ -179,7 +178,6 @@ class HomeController extends Controller
         if( move_uploaded_file($tmp_name, "$uploads_dir/$name") ){
             $upload_url = url("/public/asana_files/".$name);
         }
-
         echo $upload_url;
 		
 		
