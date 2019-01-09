@@ -130,7 +130,6 @@ class HomeController extends Controller
                 $task_id  = TargetProcess::create_task( $args );
 				foreach ($args["files"] as $file )
 				{
-                    echo $file;
                     TargetProcess::file_upload_2([
 					'task_id'=>$task_id,
 					'file'=>$file,

@@ -168,8 +168,7 @@ class TargetProcess
 		  CURLOPT_TIMEOUT => 30,
 		  CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
 		  CURLOPT_CUSTOMREQUEST => "POST",
-		  //CURLOPT_POSTFIELDS => "WebKitFormBoundary7MA4YWxkTrZu0gW\r\nContent-Disposition: form-data; name=\"files[]\"; filename=\"plastiq.jpg\"\r\nContent-Type: image/jpeg\r\n\r\n\r\n------WebKitFormBoundary7MA4YWxkTrZu0gW\r\nContent-Disposition: form-data; name=\"generalId\"\r\n\r\n734\r\n------WebKitFormBoundary7MA4YWxkTrZu0gW--",
-		  
+	  
 		  
 		  CURLOPT_POSTFIELDS => [			
 			'files[]' => new \CURLFile($file, $filetype, $fileinfo["basename"] ),
