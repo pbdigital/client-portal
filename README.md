@@ -1,4 +1,5 @@
 # README #
+#moved to Github Jan 8, 2019
 
 This README would normally document whatever steps are necessary to get your application up and running.
 
@@ -6,7 +7,7 @@ This README would normally document whatever steps are necessary to get your app
 
 * Quick summary
 * Version
-* [Learn Markdown](https://bitbucket.org/tutorials/markdowndemo)
+
 
 ### How do I get set up? ###
 
