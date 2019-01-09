@@ -23,6 +23,7 @@ $(document).ready(function(){
             loadProject : function(e){
                 var type = getUrlParameter('type');
                 console.log(type);
+				console.log(clientsAutomationbaseUrl);
                 $.ajax({
                     url : clientsAutomationbaseUrl + "/home_ajax",
                     data : {
@@ -70,7 +71,7 @@ $(document).ready(function(){
 
                         setTimeout(function(){
                             $(".dropzone").dropzone({ 
-                                url: "/file_upload",
+                                url: clientsAutomationbaseUrl + "/file_upload",
                                 headers: {
                                     'X-CSRF-Token': $('meta[name="_token"]').attr('content')
                                 },
