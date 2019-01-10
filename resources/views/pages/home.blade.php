@@ -51,9 +51,16 @@
 
 		<script type="text/javascript">
 			$(document).ready(function(){
+				//  Parent heading 
+
+				$(document).on('click', '.requests-container .card-holder > h4', function () {
+					$(this).find('i').toggleClass("fa-angle-down fa-angle-right");
+					$(this).parent().find('.card-items').slideToggle();
+				});
+
 				$(document).on('click','.requests-container .card .card--inner', function() {
-					$('.requests-container .card .card--inner').removeClass('active');
-					$(this).addClass('active');
+					// $('.requests-container .card .card--inner').removeClass('active');
+					$(this).toggleClass('active');
 					//$('#modalSlideLeft').modal('show');
 					$(this).parent().parent().addClass('active');
 					// if($(this).parent().hasClass('active')){
@@ -70,6 +77,8 @@
 					$('.requests-container').removeClass('active');
 					$('body').removeClass('scroll-bar-active');
 				});
+
+
 			});
 
 		</script>
