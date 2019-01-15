@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Asana;
 use App\User;
 use DB;
+use Illuminate\Support\Facades\Auth;
 
 class SettingsController extends Controller
 {
@@ -78,6 +79,29 @@ class SettingsController extends Controller
                 ->limit(1)
                 ->delete();
             break; //delete_user
+			
+			//CUSTOM SETTINGS
+			case "load_custom":
+				return view("pages.settings.settings-custom-content");
+				break;
+			case "change_password":
+				
+				$password = $request->input("password");
+				$id = Auth::id();
+				
+				DB::table("users")
+					->where("id", $id)
+					->update([
+						"password" => bcrypt($password),
+						"updated_at" => now()
+					]);
+				
+				break;
         endswitch;
     } // settings_ajax
+	
+	public function custom(){
+    	return view("pages.settings-custom");
+	}
+	
 }

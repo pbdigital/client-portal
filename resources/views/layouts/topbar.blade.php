@@ -36,6 +36,9 @@
 				<div class="dropdown-menu dropdown-menu-right profile-dropdown" role="menu">
 					<a href='{{url("/")}}/meeting' class="dropdown-item"><i class="pg-settings_small"></i> Book a Meeting</a>
 
+					<a href='{{url("/")}}/settings/custom' class="dropdown-item"><i class="pg-settings_small"></i> Settings</a>
+
+
 					<a href="<?=url('/')?>/logout" class="clearfix bg-master-lighter dropdown-item">
 						<span class="pull-left">Logout</span>
 						<span class="pull-right"><i class="pg-power"></i></span>
