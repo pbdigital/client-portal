@@ -10,8 +10,6 @@
         </div>
         <div class="clearfix"></div>
         <div class="card" style="margin:20px 0px">
-            
-            
                 @php 
                 $i=0;
                 @endphp
@@ -85,29 +83,30 @@
                                     </div>
                                     <div class="pull-right upper" >
                                         <div class="status"> <span class='badge' style='color:#fff;background:#48b0f7'></span></div>
-                                        <div class="time"><img src="{{url('/')}}/public/assets/img/dashboard/icon-clock.png" alt=""><span>  1h 1m</span></div>
-                                        <button style="margin-left:10px;padding:5px; background:none; border:none"
-                                                type="button" 
-                                                data-toggle="collapse" 
-                                                data-target="#collapse{{ $i}}" 
-                                                aria-expanded="false" 
-                                                aria-controls="collapse{{ $i}}" 
-                                                onclick="$(this).find('.fa').toggle();"
-                                                >
-                                                <i class="fa fa-angle-down" style="display:none"></i>
-                                                <i class="fa fa-angle-right"></i>
-                                        </button>
+                                            <div class="time"><img src="{{url('/')}}/public/assets/img/dashboard/icon-clock.png" alt=""><span>  1h 1m</span></div>
+                                                <button style="margin-left:10px;padding:5px; background:none; border:none"
+                                                        type="button" 
+                                                        data-toggle="collapse" 
+                                                        data-target="#collapse{{ $i}}" 
+                                                        aria-expanded="false" 
+                                                        aria-controls="collapse{{ $i}}" 
+                                                        onclick="$(this).find('.fa').toggle();"
+                                                        >
+                                                        <i class="fa fa-angle-down" style="display:none"></i>
+                                                        <i class="fa fa-angle-right"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <div class="card-body" style="padding:0 15px;">
+                                            <div class="collapse" id="collapse{{ $i}}">
+                                                <div class="collapse-inner">
+                                                    <p></p>
+                                                </div>
+                                            </div> 
+                                        </div>
                                     </div>
-                                    
                                 </div>
-                                <div class="card-body" style="padding:0 15px;">
-                                    <div class="collapse" id="collapse{{ $i}}">
-                                        <div class="collapse-inner">
-                                    <p></p>
-                                    </div>
-                                    </div> 
                                 </div>
-                        </div>
                         @php $i++; @endphp
                         @endisset
                        
