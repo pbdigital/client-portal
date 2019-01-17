@@ -17,11 +17,11 @@
                     @if (isset($feature['EntityState']['Name']) && $feature['EntityState']['Name'] != "Closed" || empty($feature['Name']))
                         <div class="card-holder">
                         @isset($feature['Name'])
-                            <h4><i class="fa fa-angle-down" style=""></i> {{$feature['Name']}}</h4>
+                            <h4><i class="fa fa-angle-right" style=""></i> {{$feature['Name']}}</h4>
                         @else
                             <h4><i class="fa fa-angle-down" style=""></i> General Requests</h4>
                         @endisset
-                        <div class="card-items">
+                        <div class="card-items" style="display:{{ $i==0 ? 'block' : 'none' }};">
                         @isset($feature['Tasks'])
                             @foreach ($feature['Tasks'] as $task)
                                 @if ($task['EntityState']['Name'] != "Closed")
