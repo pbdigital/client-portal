@@ -147,9 +147,13 @@ body.fixed-header .header {
   border-radius:3px;
 }
 .requests-container .card-holder > h4 > span.open {
+  border-color:#ff9900;
+  color:#ff9900;
+  margin-left:20px;
+}
+.requests-container .card-holder > h4 > span.closed {
   border-color:#cccccc;
   color:#cccccc;
-  margin-left:20px;
 }
 .requests-container .card-items {
   padding:30px;

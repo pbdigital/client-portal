@@ -15,15 +15,43 @@
                 $color='';
                 @endphp
                 @foreach ($data as $feature)
+                    @php
+                        $open = 0;
+                        $completed = 0;
+                        $closed = 0;
+                    @endphp
+                    @isset($feature['Tasks'])
+                        @foreach ($feature['Tasks'] as $task)
+                            @if ($task['EntityState']['Name'] == "Completed")
+                                @php 
+                                    $completed++; 
+                                @endphp
+                            @else
+                                @if ($task['EntityState']['Name'] != "Closed")
+                                    @php 
+                                        $open++; 
+                                    @endphp
+                                @else
+                                    @php 
+                                        $closed++; 
+                                    @endphp
+                                @endif
+                            @endif 
+                        @endforeach
+                    @endisset
+
+
+
+
                     @if (isset($feature['EntityState']['Name']) && $feature['EntityState']['Name'] != "Closed" || empty($feature['Name']))
                         <div class="card-holder">
                         @isset($feature['Name'])
                             <h4><i class="fa fa-angle-right" style=""></i> 
-                                {{$feature['Name']}} <span class="open">1 open</span><span class="completed">6 completed</span>
+                                {{$feature['Name']}} <span class="open">{{$open}} open</span><span class="completed">{{$completed}} completed</span><span class="closed">{{$closed}} closed</span>
                             </h4>
                         @else
                             <h4><i class="fa fa-angle-down" style=""></i> 
-                                General Requests <span class="open">1 open</span><span class="completed">6 completed</span>
+                                General Requests <span class="open">{{$open}} open</span><span class="completed">{{$completed}} completed</span>
                             </h4>
                         @endisset
                         <div class="card-items" style="display:{{ $i==0 ? 'block' : 'none' }};">
@@ -98,7 +126,7 @@
                             </div>
                         </div>
                         @else
-                            <div class="card--inner">
+                            <div class="card--inner" style="display: none;">
                                 <div class="card-header no-tasks" 
                                 data-toggle="collapse" 
                                     data-target="#collapse{{ $i}}" 
