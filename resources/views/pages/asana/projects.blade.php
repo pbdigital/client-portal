@@ -12,14 +12,19 @@
         <div class="card" style="margin:20px 0px">
                 @php 
                 $i=0;
+                $color='';
                 @endphp
                 @foreach ($data as $feature)
                     @if (isset($feature['EntityState']['Name']) && $feature['EntityState']['Name'] != "Closed" || empty($feature['Name']))
                         <div class="card-holder">
                         @isset($feature['Name'])
-                            <h4><i class="fa fa-angle-right" style=""></i> {{$feature['Name']}}</h4>
+                            <h4><i class="fa fa-angle-right" style=""></i> 
+                                {{$feature['Name']}} <span class="open">1 open</span><span class="completed">6 completed</span>
+                            </h4>
                         @else
-                            <h4><i class="fa fa-angle-down" style=""></i> General Requests</h4>
+                            <h4><i class="fa fa-angle-down" style=""></i> 
+                                General Requests <span class="open">1 open</span><span class="completed">6 completed</span>
+                            </h4>
                         @endisset
                         <div class="card-items" style="display:{{ $i==0 ? 'block' : 'none' }};">
                         @isset($feature['Tasks'])
@@ -37,9 +42,28 @@
                                             </div>
                                             <div class="pull-right upper" >
                                                 
-                                                <div class="date"><img src="{{url('/')}}/public/assets/img/request-icon-calendar.png" alt=""><span>03 December - 07 December</span></div> 
+                                                <!-- <div class="date"><img src="{{url('/')}}/public/assets/img/request-icon-calendar.png" alt=""><span>03 December - 07 December</span></div>  -->
                                                 <div class="status-container">
-                                                    <div class="status"> <span class='badge' style='color:#fff;background:#48b0f7'>{{$task['EntityState']['Name']}}</span></div>
+                                                    
+                                                    <div class="status"> <span class='badge' style="color:#fff;
+                                                    background:
+                                                    @switch($task['EntityState']['Name'])
+                                                        @case('Queued')
+                                                            #81c683;
+                                                            @break
+
+                                                        @case('Request Received')
+                                                            #42aefd;
+                                                            @break
+
+                                                        @case('Completed')
+                                                            #008000;
+
+                                                        @default
+                                                           #48b0f7;
+                                                    @endswitch
+                                                    "
+                                                    >{{$task['EntityState']['Name']}}</span></div>
                                                     <div class="time"><img src="{{url('/')}}/public/assets/img/dashboard/icon-clock.png" alt=""><span>  1h 1m</span></div>
                                                     <button style="margin-left:10px;padding:5px; background:none; border:none"
                                                             type="button" 
@@ -63,8 +87,11 @@
                                             </div>
                                             </div> 
                                         </div>
-                                </div>
+                                    </div>
+
+                               
                                 @endif
+
                                 @php $i++; @endphp
                                 
                             @endforeach
@@ -106,7 +133,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                </div>
+                            </div>
                         @php $i++; @endphp
                         @endisset
                        
