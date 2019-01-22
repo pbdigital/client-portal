@@ -54,7 +54,7 @@ class TimeEntriesController extends Controller
      	}
      	else
      	{
-	     	DB::table('tbl_credit_logs')->where('time_id', $time_id)->update(['spent' => $spent]);
+	     	DB::table('tbl_credit_logs')->where('time_id', $time_id)->update(['spent' => '-'.$spent]);
      	}
     }
 
