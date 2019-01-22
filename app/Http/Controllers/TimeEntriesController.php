@@ -8,12 +8,15 @@ use DB;
 use Illuminate\Support\Facades\Auth;
 use App\Models\TblCreditsLogs;
 use App\Models\TblCredits;
+use Illuminate\Support\Facades\Log;
+
 
 class TimeEntriesController extends Controller
 {
 	public function tp_receiver_add_entry(){
    
-     	$_POST = (json_decode(file_get_contents("php://input"), false));
+     	$_POST = (json_decode(file_get_contents("php://input")));
+
      	$data = $_POST->Entity;
      	
      	$project_id = $data->ProjectID;
@@ -36,6 +39,10 @@ class TimeEntriesController extends Controller
 			    ]
 			);
 			var_dump($ins);
+     	}
+     	else
+     	{
+	     	DB::table('tbl_credit_logs')->where('time_id', $time_id)->update(['spent' => $spent]);
      	}
     }
 
