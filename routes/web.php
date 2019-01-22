@@ -19,17 +19,17 @@ Route::any("/home_ajax", "HomeController@home_ajax");
 Route::any("/file_upload", "HomeController@file_upload");
 
 Route::group(['middleware' => ['UserMiddleWare:canaccess']], function() {
-    Route::get("/settings", "SettingsController@index");
-    Route::any("/settings_ajax", "SettingsController@settings_ajax");
-    
-    Route::get("/settings/custom", "SettingsController@custom");
+	Route::get("/settings", "SettingsController@index");
+	Route::any("/settings_ajax", "SettingsController@settings_ajax");
+
+	Route::get("/settings/custom", "SettingsController@custom");
     
     
 });
 
 Route::get("/meeting", "MeetingsController@index");
 Route::any("get_email/{id}", "NotificationsController@get_email");
-
+Route::any("time-entries/add/", "TimeEntriesController@tp_receiver_add_entry");
 #Logout
 Route::get("/logout", function(){
     return View::make("logout");
