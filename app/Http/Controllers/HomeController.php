@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\TargetProcess;
 use App\User;
 use App\Helper;
-
+use DB;
 
 
 
@@ -35,8 +35,16 @@ class HomeController extends Controller
     {
         if(\Auth::check())
 		{
-            
-			return view("pages.index");
+
+            $project_id = \Auth::user()->project_id; 
+            $rs = DB::select("SELECT SUM(spent) as spent FROM tbl_credit_logs WHERE project_id = ".$project_id);
+            $time = $rs[0]->spent;
+            if ($time == null)
+            {
+                $time = 0;
+            }
+
+			return view("pages.index", array('time'=>$time));
 
 		}
 		

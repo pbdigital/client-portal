@@ -21,6 +21,7 @@
 					<!-- START CONTAINER FLUID -->
 					<div class=" container-fluid   container-fixed-lg">
                          <h1>Hi {{ Auth::user()->first_name }}, What Would You Like To Do Today?</h1>
+                         <p>You have {{$time}} hour(s) available</p>
                          <div class="menu">
                              <a href="<?=url('/')?>/requests/?type=new">
                                  <img src="<?=url('/')?>/public/assets/img/dashboard/icon-new-request.png" alt="">
