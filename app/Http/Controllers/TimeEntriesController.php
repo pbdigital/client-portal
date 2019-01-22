@@ -13,7 +13,19 @@ use Illuminate\Support\Facades\Log;
 
 class TimeEntriesController extends Controller
 {
-	public function tp_receiver_add_entry(){
+	public function index()
+     {
+          $project_id = \Auth::user()->project_id;
+          $rs = DB::select("SELECT * FROM tbl_credit_logs WHERE project_id = ".$project_id ." ORDER BY date desc");
+          $time = DB::select("SELECT SUM(spent) as spent FROM tbl_credit_logs WHERE project_id = ".$project_id);
+          $time = $rs[0]->spent;
+          if ($time == null)
+          {
+           $time = 0;
+          }
+          return view("pages.settings.time", array('data' => $rs,'time'=> $time)); 
+     }
+     public function tp_receiver_add_entry(){
    
      	$_POST = (json_decode(file_get_contents("php://input")));
 

@@ -34,8 +34,9 @@
 				
 				</button>
 				<div class="dropdown-menu dropdown-menu-right profile-dropdown" role="menu">
-					<a href='{{url("/")}}/meeting' class="dropdown-item"><i class="pg-settings_small"></i> Book a Meeting</a>
-
+					<a href='{{url("/")}}' class="dropdown-item"><i class="fa fa-home"></i> Dashboard</a>
+					<a href='{{url("/")}}/meeting' class="dropdown-item"><i class="fa fa-calendar"></i> Book a Meeting</a>
+					<a href='{{url("/")}}/time-entries' class="dropdown-item"><i class="fa fa-clock-o"></i> Time Entries</a>
 					<a href='{{url("/")}}/settings/custom' class="dropdown-item"><i class="pg-settings_small"></i> Settings</a>
 
 

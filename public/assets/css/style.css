@@ -35,7 +35,7 @@ body.fixed-header .header {
 .dashboard-menu p
 {
   text-align: center;
-  margin-bottom: 70px;
+  margin-bottom: 40px;
 }
 
 .dashboard-menu .menu {
@@ -674,6 +674,11 @@ form#loginform {
 .dont-have a {
   color: #262626;
   font-weight: 600;
+}
+.time-entries .heading
+{
+  text-align: center;
+  margin: 30px;
 }
 
 @media only screen and (max-width: 1800px) {

@@ -81,9 +81,9 @@
 					</a>
 					<span class=" icon-thumbnail"><i class="fa fa-calendar"></i></span>
 				</li>
-			<?php 
+		
 				
-				if(\Auth::user()->user_type==2):
+				@if(\Auth::user()->user_type==2):
 				?>
 				<li class="m-t-30 ">
   
@@ -94,9 +94,7 @@
 					<span class=" icon-thumbnail"><i class="fa fa-cogs"></i></span>
   
 				</li>
-				<?php 
-				endif;
-				?>
+				@endif
 				
 
 				 
