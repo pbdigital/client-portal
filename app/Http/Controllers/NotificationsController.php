@@ -51,7 +51,7 @@ class NotificationsController extends Controller
                 Mail::to($this->email)->cc('paul@pbdigital.com.au')->send(
                     new TaskCreated($this->first_name, $this->task_name)
                 );
-            }s  
+            }  
         }
     }
 
