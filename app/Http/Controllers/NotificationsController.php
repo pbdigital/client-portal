@@ -7,6 +7,9 @@ use App\TargetProcess;
 use App\User;
 use App\Helper;
 use DB;
+use Mail;
+use App\Mail\TaskCreated;
+
 
 class NotificationsController extends Controller
 {
@@ -15,6 +18,10 @@ class NotificationsController extends Controller
      *
      * @return void
      */
+    public $first_name;
+    public $email;
+    public $task_name;
+
     public function __construct()
     {
         //$this->middleware('auth');
@@ -26,8 +33,29 @@ class NotificationsController extends Controller
         //dd($users);
         if (isset($user))
         {
-            return json_encode(array('email'=>$user->email,'first_name'=>$user->first_name));
-        }
-        
+            $this->email = $user->email;
+            $this->first_name = $user->first_name;
+        }   
     }
+    public function NewTaskCreated()
+    {
+        #this is the webhook receiver from Target Process
+        $_POST = (json_decode(file_get_contents("php://input")));
+        $data = $_POST;
+        if (isset($data->ProjectId))
+        {
+            $this->get_email($data->ProjectId);
+            if (isset($this->email))
+            {
+                $this->task_name = $data->Name;
+                Mail::to($this->email)->cc('paul@pbdigital.com.au')->send(
+                    new TaskCreated($this->first_name, $this->task_name)
+                );
+            }s  
+        }
+    }
+
+
+
+
 }

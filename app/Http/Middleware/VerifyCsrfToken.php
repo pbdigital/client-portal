@@ -12,7 +12,7 @@ class VerifyCsrfToken extends Middleware
      * @var array
      */
     protected $except = [
-    	'/time-entries/add'
+    	'/time-entries/add','/new_task'
         //
     ];
 }
