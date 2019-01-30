@@ -19,7 +19,6 @@ class TimeEntriesController extends Controller
           $rs = DB::select("SELECT * FROM tbl_credit_logs WHERE project_id = ".$project_id ." ORDER BY date desc");
           $time = DB::select("SELECT SUM(spent) as spent FROM tbl_credit_logs WHERE project_id = ".$project_id);
           $time = $time[0]->spent;
-        
           if ($time == null)
           {
                $time = 0;
