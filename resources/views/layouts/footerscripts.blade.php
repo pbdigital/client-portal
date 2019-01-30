@@ -60,7 +60,6 @@ http://github.com/sendgrid/sendgrid-php</textarea>
                                         <div class="avatar">P</div>
                                         <div class="message">
                                             <div class="name">Paul <span class="time">10 hours</span></div>
-                                            <p>Send Grid API Key: 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</p>
                                         </div>
                                     </div>
                                 </div>
