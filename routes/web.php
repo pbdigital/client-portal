@@ -32,6 +32,7 @@ Route::any("get_email/{id}", "NotificationsController@get_email");
 Route::any("/new_task/", "NotificationsController@NewTaskCreated");
 Route::any("time-entries/add/", "TimeEntriesController@tp_receiver_add_entry");
 Route::any("time-entries/", "TimeEntriesController@index");
+Route::any("invoicing/", "TimeEntriesController@invoicing");
 #Logout
 Route::get("/logout", function(){
     return View::make("logout");
