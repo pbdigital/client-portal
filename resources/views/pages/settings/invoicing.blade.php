@@ -20,33 +20,26 @@
                 <div class="content ">
                     <!-- START CONTAINER FLUID -->
                     <div class=" container-fluid   container-fixed-lg time-entries">
-                        <div class="heading"><b>Account Balance:</b> {{$time}} Hour(s) Available</div>
                         <table class="table table-striped">
                             <thead>
                                 <tr>
-                                    <th scope="col">Date</th>
-                                    <th scope="col">Spent</th>
-                                    <th scope="col">Time Used</th>
-                                    <th scope="col">Description</th>
+                                    <th scope="col">Business</th>
+                                    <th scope="col">Quickbooks Id</th>
+                                    <th scope="col">Target Process Id</th>
+                                    <th scope="col">Balance</th>
+
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($data as $time)
-                                <tr>
-                                    <td>{{date ('Y-m-d',strtotime($time->date))}}</td>
-                                    <td>{{$time->spent * -1}}</td>
-                                    <td>
-                                        @if ($time->discount_percent > 0)
-                                            @php 
-                                                $discount = $time->spent * $time->discount_percent / 100;
-                                                echo round($time->spent - $discount,2) * -1; 
-                                            @endphp
-                                        @else
-                                        {{$time->spent * -1}}
-                                        @endif
-                                    </td>
-                                    <td>{{$time->assignable }}</td>
-                                </tr>
+                                @foreach ($time_entries as $time)
+                                    @if ($time->time != null)
+                                        <tr>
+                                            <td>{{$time->name}}</td>
+                                            <td>{{$time->quickbooks_client_id}}</td>
+                                            <td>{{$time->project_id}}</td>
+                                            <td>{{$time->time}}</td>
+                                        </tr>
+                                    @endif
                                 @endforeach
 
                             </tbody>
