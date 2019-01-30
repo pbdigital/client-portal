@@ -20,13 +20,13 @@
                 <div class="content ">
                     <!-- START CONTAINER FLUID -->
                     <div class=" container-fluid   container-fixed-lg time-entries">
-                        <div class="heading"><b>Account Balance:</b> {{$time}} Hour(s) Available</div>
+                        <div class="heading"><b>Account Balance:</b> {{$time}} Credits(s) Available</div>
                         <table class="table table-striped">
                             <thead>
                                 <tr>
                                     <th scope="col">Date</th>
-                                    <th scope="col">Spent</th>
-                                    <th scope="col">Time Used</th>
+                                    <th scope="col">Time Spent</th>
+                                    <th scope="col">Credits Used</th>
                                     <th scope="col">Description</th>
                                 </tr>
                             </thead>

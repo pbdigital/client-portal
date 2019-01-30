@@ -21,7 +21,7 @@
 					<!-- START CONTAINER FLUID -->
 					<div class=" container-fluid   container-fixed-lg">
                          <h1>Hi {{ Auth::user()->first_name }}, What Would You Like To Do Today?</h1>
-                         <p><div class="heading" style="text-align: center;"><b>Account Balance:</b> You Have {{$time}} Hour(s) Available To Use</div></p>
+                         <p><div class="heading" style="text-align: center;"><b>Account Balance:</b> You Have {{$time}} Credit(s) Available To Use</div></p>
                          <div class="menu">
                              <a href="<?=url('/')?>/requests/?type=new">
                                  <img src="<?=url('/')?>/public/assets/img/dashboard/icon-new-request.png" alt="">
@@ -45,8 +45,8 @@
                              </a>
                              <a href="#">
                                  <img src="<?=url('/')?>/public/assets/img/dashboard/icon-pay-invoice.png" alt="">
-                                 <h2>Pay an Invoice</h2>
-                                 <p>Pay an oustanding invoice. <br>(coming soon) </p>
+                                 <h2>Top Up Your Account</h2>
+                                 <p>Use this to add hours to your account. <br>(coming soon) </p>
                              </a>
                          </div>
 					</div>
