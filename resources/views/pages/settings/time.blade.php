@@ -34,15 +34,15 @@
                                 @foreach ($data as $time)
                                 <tr>
                                     <td>{{date ('Y-m-d',strtotime($time->date))}}</td>
-                                    <td>{{$time->spent}}</td>
+                                    <td>{{$time->spent * -1}}</td>
                                     <td>
                                         @if ($time->discount_percent > 0)
                                             @php 
                                                 $discount = $time->spent * $time->discount_percent / 100;
-                                                echo round($time->spent - $discount,2); 
+                                                echo round($time->spent - $discount,2) * -1; 
                                             @endphp
                                         @else
-                                        {{$time->spent}}
+                                        {{$time->spent * -1}}
                                         @endif
                                     </td>
                                     <td>{{$time->assignable }}</td>
