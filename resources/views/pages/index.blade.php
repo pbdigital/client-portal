@@ -46,7 +46,7 @@
                              <a href="#">
                                  <img src="<?=url('/')?>/public/assets/img/dashboard/icon-pay-invoice.png" alt="">
                                  <h2>Top Up Your Account</h2>
-                                 <p>Use this to add hours to your account. <br>(coming soon) </p>
+                                 <p>Use this to add time credits into your account. <br>(coming soon) </p>
                              </a>
                          </div>
 					</div>
