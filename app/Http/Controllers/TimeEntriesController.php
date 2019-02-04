@@ -17,7 +17,7 @@ class TimeEntriesController extends Controller
      {
           $project_id = \Auth::user()->project_id;
           $rs = DB::select("SELECT * FROM tbl_credit_logs WHERE project_id = ".$project_id ." ORDER BY date desc");
-          $time = DB::select("SELECT sum(spent * discount_percent / 100) as spent FROM tbl_credit_logs WHERE project_id = ".$project_id);
+          $time = DB::select("SELECT (sum(spent) - sum(spent * discount_percent / 100)) as spent FROM tbl_credit_logs WHERE project_id = ".$project_id);
           $time = $time[0]->spent;
           if ($time == null)
           {
