@@ -133,7 +133,12 @@ body.fixed-header .header {
   border-bottom: 1px solid #ededed;
   cursor: pointer;
 }
-
+.requests-container .card-holder > h4 .date
+{
+  margin-left: 20px;
+  font-size: 13px;
+  color:#808080; 
+}
 .requests-container .card-holder > h4 > i {
   color:#ff4d00;
   font-size: 25px;

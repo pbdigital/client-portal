@@ -67,12 +67,13 @@ class TargetProcess
         self::$url = $url;
         return self::api_send();
     }
-    public static function get_everything($features = 'EntityState,Name,NumericPriority', $user_stories = 'Feature,Name,EntityState,Description,NumericPriority', $bugs =  'Feature,Name,EntityState,Description,NumericPriority')
+    public static function get_everything($features = 'EntityState,Name,NumericPriority,Release[StartDate,EndDate,Name]', $user_stories = 'Feature,Name,EntityState,Description,NumericPriority,Release[StartDate,EndDate,Name]', $bugs =  'Feature,Name,EntityState,Description,NumericPriority,Release[StartDate,EndDate,Name]')
     {   
         $project_id = self::$project_id;
         $url = "Projects/$project_id?include=[Features[$features],UserStories[$user_stories],Bugs[$bugs]]";
         self::$url = $url;
-        return self::api_send();
+        $data = self::api_send();
+        return $data;
     }
 
     public static function get_project_details(){

@@ -43,12 +43,13 @@
 
 
 
-                    @if (isset($feature['EntityState']['Name']) && $feature['EntityState']['Name'] != "Closed" || empty($feature['Name']))
+                    @if (isset($feature['EntityState']['Name']) && $feature['EntityState']['Name'] != "Done" || empty($feature['Name']))
                         <div class="card-holder">
                         @isset($feature['Name'])
                             <h4><i class="fa fa-angle-right" style=""></i> 
-                                {{$feature['Name']}} <span class="open">{{$open}} open</span><span class="completed">{{$completed}} completed</span><span class="closed">{{$closed}} closed</span>
+                                Feature: {{$feature['Name']}} <span class="open">{{$open}} open</span><span class="completed">{{$completed}} completed</span><span class="closed">{{$closed}} closed</span><div class="date"><img src="{{url('/')}}/public/assets/img/request-icon-calendar.png" alt=""><span>{{isset($feature['Release']['Name']) ? $feature['Release']['Name'] : 'TBA'}}</span></div> 
                             </h4>
+
                         @else
                             <h4><i class="fa fa-angle-down" style=""></i> 
                                 General Requests <span class="open">{{$open}} open</span><span class="completed">{{$completed}} completed</span>
@@ -70,7 +71,7 @@
                                             </div>
                                             <div class="pull-right upper" >
                                                 
-                                                <!-- <div class="date"><img src="{{url('/')}}/public/assets/img/request-icon-calendar.png" alt=""><span>03 December - 07 December</span></div>  -->
+                                                <div class="date"><img src="{{url('/')}}/public/assets/img/request-icon-calendar.png" alt=""><span>{{isset($task['Release']['Name']) ? $task['Release']['Name'] : 'TBA'}}</span></div>  
                                                 <div class="status-container">
                                                     
                                                     <div class="status"> <span class='badge' style="color:#fff;
