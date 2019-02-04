@@ -20,7 +20,7 @@
                 <div class="content ">
                     <!-- START CONTAINER FLUID -->
                     <div class=" container-fluid   container-fixed-lg time-entries">
-                        <div class="heading"><b>Account Balance:</b> {{$time}} Credits(s) Available</div>
+                        <div class="heading"><b>Account Balance:</b> {{round($time,2)}} Credits(s) Available</div>
                         <table class="table table-striped">
                             <thead>
                                 <tr>
