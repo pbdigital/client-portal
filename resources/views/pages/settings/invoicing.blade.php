@@ -26,18 +26,18 @@
                                     <th scope="col">Business</th>
                                     <th scope="col">Quickbooks Id</th>
                                     <th scope="col">Target Process Id</th>
-                                    <th scope="col">Balance</th>
+                                    <th scope="col">Total Spent</th>
 
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($time_entries as $time)
-                                    @if ($time->time != null)
+                                @foreach ($users_project as $project)
+                                    @if($project->total_credits->total_spent) 
                                         <tr>
-                                            <td>{{$time->name}}</td>
-                                            <td>{{$time->quickbooks_client_id}}</td>
-                                            <td>{{$time->project_id}}</td>
-                                            <td>{{$time->time}}</td>
+                                            <td>{{ $project->name }}</td>
+                                            <td>{{ ($project->quickbooks_client_id) ? $project->quickbooks_client_id : "--" }}</td>
+                                            <td>{{ $project->project_id }}</td>
+                                            <td>{{ $project->total_credits->total_spent }}</td>
                                         </tr>
                                     @endif
                                 @endforeach
