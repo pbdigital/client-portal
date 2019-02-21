@@ -54,16 +54,15 @@ class TimeEntriesController extends Controller
                DB::table('tbl_credit_logs')->where('time_id', $time_id)->update(['spent' => '-' . $spent]);
           }
      }
+
      public function invoicing()
      {
-          $time = DB::select("
-               SELECT *,
-                  (SELECT SUM(tbl_credit_logs.spent) 
-                   FROM tbl_credit_logs 
-                   WHERE tbl_credit_logs.project_id = users.project_id) AS time
-               FROM users
-               ORDER By time asc");
-          return view("pages.settings.invoicing", array('time_entries' => $time));
+          $users = User::get();
+
+          $users = $users->sortBy(function ($user) {
+               return $user->total_credits->total_spent;
+          });
+
+          return view("pages.settings.invoicing", array('users_project' => $users));
      }
 }
-
