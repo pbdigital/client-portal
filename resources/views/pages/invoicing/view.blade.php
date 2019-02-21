@@ -23,7 +23,9 @@
                         <div class="row">
                             <div class="col-md-12  mt-4">
 
-                                <h3>Details :</h3>
+                                <h3 class="float-left">Details :</h3>
+                                <a class="btn btn-success float-right text-white" href="{{ route('invoicing.index') }}">Back To List</a>
+                                
                                 <table class="table">
                                     <tbody>
                                         <tr>
