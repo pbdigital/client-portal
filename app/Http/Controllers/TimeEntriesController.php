@@ -1,14 +1,8 @@
 <?php
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Asana;
 use App\User;
 use DB;
-use Illuminate\Support\Facades\Auth;
-use App\Models\TblCreditsLogs;
-use App\Models\TblCredits;
-use Illuminate\Support\Facades\Log;
 
 
 class TimeEntriesController extends Controller
