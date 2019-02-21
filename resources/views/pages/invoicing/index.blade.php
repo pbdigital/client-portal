@@ -34,7 +34,11 @@
                                 @foreach ($users_project as $project)
                                     @if($project->total_credits->total_spent) 
                                         <tr>
-                                            <td>{{ $project->name }}</td>
+                                            <td>
+                                            <a href="{{ route('invoicing.show', ['project_id' => $project->project_id]) }}">
+                                                    {{ $project->name }}
+                                                </a>
+                                            </td>
                                             <td>{{ ($project->quickbooks_client_id) ? $project->quickbooks_client_id : "--" }}</td>
                                             <td>{{ $project->project_id }}</td>
                                             <td>{{ $project->total_credits->total_spent }}</td>
