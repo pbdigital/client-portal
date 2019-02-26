@@ -24,7 +24,7 @@ class InvoicingController extends Controller
     public function show($project_id)
     {
         $user = User::where('project_id', $project_id)->first();
-        $credit_logs = $user->creditLogs;
+        $credit_logs = $user->creditLogs()->orderBy('date', 'DESC')->get();
 
         return view("pages.invoicing.view", [
             'user' => $user,
