@@ -50,12 +50,16 @@ class User extends Authenticatable
         $total_credit->project_id = null;
         $total_credit->total_spent = 0;
         $total_credit->discount_percent = 0;
+        $total_credit->total_balance = 0;
 
         if ($credit_logs->count()) {
             foreach ($credit_logs as $credit) {
+                $spent = $credit->spent;
+                $balance = $spent - ($spent * ($credit->discount_percent / 100));
                 $total_credit->project_id = $credit->project_id;
-                $total_credit->total_spent += $credit->spent;
+                $total_credit->total_spent += $spent;
                 $total_credit->discount_percent += $credit->discount_percent;
+                $total_credit->total_balance += $balance;
             }
         }
 

@@ -42,7 +42,10 @@
                                         </tr>
                                         <tr>
                                             <td>Total Spent:</td>
-                                            <td colspan="3">{{ $user->total_credits->total_spent }}</td>
+                                            <td>{{ $user->total_credits->total_spent }}</td>
+
+                                            <td>Total Balance:</td>
+                                            <td>{{ $user->total_credits->total_balance }}</td>
                                         </tr>
                                     </tbody>
                                 </table>

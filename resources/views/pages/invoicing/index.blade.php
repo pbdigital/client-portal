@@ -34,7 +34,7 @@
                                     <th scope="col">Quickbooks Id</th>
                                     <th scope="col">Target Process Id</th>
                                     <th scope="col">Total Spent</th>
-
+                                    <th scope="col">Total Balance</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -49,6 +49,7 @@
                                             <td>{{ ($project->quickbooks_client_id) ? $project->quickbooks_client_id : "--" }}</td>
                                             <td>{{ $project->project_id }}</td>
                                             <td>{{ $project->total_credits->total_spent }}</td>
+                                            <td>{{ $project->total_credits->total_balance }}</td>
                                         </tr>
                                     @endif
                                 @endforeach
