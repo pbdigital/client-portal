@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\User;
+use App\Model\CreditLog;
+use Illuminate\Http\Request;
 
 class InvoicingController extends Controller
 {
@@ -27,6 +29,29 @@ class InvoicingController extends Controller
         return view("pages.invoicing.view", [
             'user' => $user,
             'credit_logs' => $credit_logs
+        ]);
+    }
+
+    public function update(Request $request, $id)
+    {
+        $this->validate(
+            $request,
+            [
+                'assignable' => 'required',
+                'spent' => 'required|numeric',
+                'discount_percent' => 'required|numeric'
+            ]
+        );
+
+        $credit_log = CreditLog::find($id);
+        $credit_log->assignable = $request->assignable;
+        $credit_log->spent = $request->spent;
+        $credit_log->discount_percent = $request->discount_percent;
+        $credit_log->update();
+
+        return response()->json([
+            'credit_log' => $credit_log,
+            'message' => '<strong>' . $credit_log->assignable . "</strong> was updated."
         ]);
     }
 }

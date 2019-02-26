@@ -58,6 +58,7 @@
                                             <th>Assignable</th>
                                             <th>Spent</th>
                                             <th>Discount Percent</th>
+                                            <th>&nbsp;</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -65,10 +66,13 @@
                                         @foreach ($credit_logs as $key => $credit_log)
                                             <tr>
                                                 <td>{{ $key + 1 }}.</td>
-                                                <td>{{ $credit_log->time_id }}</td>
-                                                <td>{{ $credit_log->assignable }}</td>
-                                                <td>{{ $credit_log->spent }}</td>
-                                                <td>{{ $credit_log->discount_percent }}</td>
+                                                <td id="column-time_id-{{ $credit_log->id }}">{{ $credit_log->time_id }}</td>
+                                                <td id="column-assignable-{{ $credit_log->id }}">{{ $credit_log->assignable }}</td>
+                                                <td id="column-spent-{{ $credit_log->id }}">{{ $credit_log->spent }}</td>
+                                                <td id="column-discount_percent-{{ $credit_log->id }}">{{ $credit_log->discount_percent }}</td>
+                                                <td>
+                                                    <button class="btn btn-primary btn-xs" onclick="showCreditLogModal({{ json_encode($credit_log) }})">Update</button>
+                                                </td>
                                             </tr>
                                         @endforeach
                                     @endif
@@ -80,15 +84,19 @@
                     <!-- END CONTAINER FLUID -->
                 </div> <!-- .content -->
                 <!-- END PAGE CONTENT -->
+
+
                 <!-- START COPYRIGHT -->
                 <!-- START CONTAINER FLUID -->
                 <!-- START CONTAINER FLUID -->
                 @include('layouts.footer')
                 <!-- END COPYRIGHT -->
+
+                <!-- Credit Log Modal -->
+                @include('pages.invoicing.modal')
+                <!-- End Credit Log Modal -->
             </div>
             <!-- END PAGE CONTENT WRAPPER -->
-            
-            
         </div>
         <!-- END PAGE CONTAINER -->
 
@@ -104,10 +112,6 @@
         @include('layouts.footerscripts')
         <!-- END PAGE LEVEL JS -->
 
-        <script>
-            $(document).ready( function () {
-                $('#invoicing-table').DataTable();
-            } );
-        </script>
+        @include('pages.invoicing.script')
     </body>
 </html>

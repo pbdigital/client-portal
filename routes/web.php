@@ -35,6 +35,11 @@ Route::group(['prefix' => 'invoicing'], function () {
     Route::get("/", [
 		'uses' => 'InvoicingController@index',
 		'as' => 'invoicing.index'
+    ]);
+
+    Route::post("/{id}", [
+        'uses' => 'InvoicingController@update',
+        'as' => 'invoicing.update'
 	]);
 
     Route::get("/{project_id}", [
