@@ -70,7 +70,7 @@
                                         @foreach ($credit_logs as $key => $credit_log)
                                             <tr>
                                                 <td>{{ $key + 1 }}.</td>
-                                                <td>{{ $credit_log->date->format('M d, Y') }}</td>
+                                                <td>{{ ($credit_log->date) ? $credit_log->date->format('M d, Y') : '--' }}</td>
                                                 <td id="column-time_id-{{ $credit_log->id }}">{{ $credit_log->time_id }}</td>
                                                 <td id="column-assignable-{{ $credit_log->id }}">{{ $credit_log->assignable }}</td>
                                                 <td id="column-spent-{{ $credit_log->id }}">{{ $credit_log->spent }}</td>
