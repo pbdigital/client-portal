@@ -52,7 +52,6 @@
                 var response_json = resp.responseJSON;
                 
                 $.each(response_json.errors, function(i, v) {
-                    alert(i)
                     var resp = '* ' + v;
                     $('#error_' + i).addClass('has-error');
                     $('#error_'+i+' .help-block').removeClass('hidden').html(resp);
