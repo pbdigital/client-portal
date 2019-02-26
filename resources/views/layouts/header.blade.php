@@ -29,7 +29,10 @@
 	<link href="<?=url('/')?>/public/assets/plugins/bootstrap-daterangepicker/daterangepicker-bs3.css" rel="stylesheet" type="text/css" media="screen">
 	<link href="https://cdnjs.cloudflare.com/ajax/libs/jquery-timepicker/1.10.0/jquery.timepicker.css" rel="stylesheet" type="text/css" media="screen">
 	<link href="<?=url('/')?>/public/assets/plugins/jquery-datatable/media/css/dataTables.bootstrap.min.css" rel="stylesheet" type="text/css" />
- 
+	<link href="<?=url('/')?>/public/pages/css/pages-icons.css" rel="stylesheet" type="text/css">
+	<link class="main-stylesheet" href="<?=url('/')?>/public/pages/css/pages.css" rel="stylesheet" type="text/css" />
+	<link href="<?=url('/')?>/public/assets/css/style.css" rel="stylesheet" type="text/css" />
+
 	<script src="<?=url('/')?>/public/assets/plugins/pace/pace.min.js" type="text/javascript"></script>
 	<script src="<?=url('/')?>/public/assets/plugins/jquery/jquery-3.2.1.min.js" type="text/javascript"></script>
 	<script src="<?=url('/')?>/public/assets/plugins/modernizr.custom.js" type="text/javascript"></script>
@@ -43,9 +46,6 @@
 	<script src="<?=url('/')?>/public/assets/plugins/jquery-scrollbar/jquery.scrollbar.min.js"></script>
 
 
-	<link href="<?=url('/')?>/public/pages/css/pages-icons.css" rel="stylesheet" type="text/css">
-	<link class="main-stylesheet" href="<?=url('/')?>/public/pages/css/pages.css" rel="stylesheet" type="text/css" />
-	<link href="<?=url('/')?>/public/assets/css/style.css" rel="stylesheet" type="text/css" />
 
 
 	<style type="text/css">
