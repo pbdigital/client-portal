@@ -117,6 +117,6 @@
         @include('layouts.footerscripts')
         <!-- END PAGE LEVEL JS -->
 
-        @include('pages.invoicing.script')
+        @include('pages.invoicing.view-script')
     </body>
 </html>

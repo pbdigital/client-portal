@@ -72,9 +72,5 @@
 
         return `${year}-${month}-${date}`;
     }
-    
-    $(document).ready(function() {
-        
-    })
     /* End Update Credit Log */
 </script>
