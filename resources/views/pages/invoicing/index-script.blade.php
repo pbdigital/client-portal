@@ -140,16 +140,5 @@
             }
         }); // end ajax
     }
-
-    function getInputDate(creditLogDate) {
-        let credit_date = new Date(creditLogDate)
-        let year = credit_date.getFullYear(),
-            month = credit_date.getMonth() + 1,
-            date = credit_date.getDate()
-        month = (month < 9) ? `0${month}` : month
-        date = (date < 9) ? `0${date}` : date
-
-        return `${year}-${month}-${date}`;
-    }
     /* End Update Credit Log */
 </script>
