@@ -76,7 +76,17 @@
                                                 <td id="column-spent-{{ $credit_log->id }}">{{ $credit_log->spent }}</td>
                                                 <td id="column-discount_percent-{{ $credit_log->id }}">{{ $credit_log->discount_percent }}</td>
                                                 <td class="text-center">
-                                                    <button class="btn btn-primary btn-xs" onclick="showCreditLogModal({{ json_encode($credit_log) }})">Update</button>
+                                                    <button class="btn btn-primary btn-xs" onclick="showCreditLogModal({{ json_encode($credit_log) }})">
+                                                        Update
+                                                    </button>
+
+                                                    <button 
+                                                        class="btn btn-danger btn-xs" 
+                                                        onclick="comfirmDeleteCreditLog({{ $credit_log->id }}, '{{ $credit_log->assignable }}')">
+                                                        Delete
+                                                    </button>
+
+                                                    
                                                 </td>
                                             </tr>
                                         @endforeach

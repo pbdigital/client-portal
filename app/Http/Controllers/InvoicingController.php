@@ -54,4 +54,21 @@ class InvoicingController extends Controller
             'message' => '<strong>' . $credit_log->assignable . "</strong> was updated."
         ]);
     }
+
+    public function delete($id)
+    {
+        $credit_log = CreditLog::find($id);
+
+        if (!$credit_log) {
+            return response()->json([
+                'message' => 'No project was deleted.'
+            ]);
+        }
+
+        $credit_log->delete();
+
+        return response()->json([
+            'message' => '<strong>' . $credit_log->assignable . "</strong> was deleted."
+        ]);
+    }
 }

@@ -55,6 +55,11 @@ Route::group(['prefix' => 'invoicing'], function () {
         'as' => 'invoicing.update'
     ]);
 
+    Route::delete("/{id}", [
+        'uses' => 'InvoicingController@delete',
+        'as' => 'invoicing.delete'
+    ]);
+
     Route::get("/{project_id}", [
         'uses' => 'InvoicingController@show',
         'as' => 'invoicing.show'

@@ -73,4 +73,49 @@
         return `${year}-${month}-${date}`;
     }
     /* End Update Credit Log */
+
+    function comfirmDeleteCreditLog(id, assignable) {
+        var comfirm_delete = confirm(`Are you sure you want to delete the "${assignable}"?`);
+        
+        if (comfirm_delete == true) {
+            deleteCreditLog(id)
+        }
+    }
+
+    function deleteCreditLog(id) {
+        let url = "{{ route('invoicing.delete', ['id' => ':id']) }}"
+        url = url.replace(':id', id)
+
+        $.ajax({
+            type: 'delete',
+            url: url,
+            data: "_token={{ csrf_token() }}",
+            success: function(data) {
+                $('body').pgNotification({ 
+                    message: data.message, 
+                    style: 'flip', 
+                    type: 'danger' 
+                }).show();
+
+                setTimeout(function() {
+                    window.location.reload()
+                }, 1000)
+            },
+            error: function(resp){
+                $('#credit-log-modal-save-btn').attr('disabled',false);
+                form.find('.has-error').removeClass('has-error');
+                $('#credit-log-form [id^="error_"] .help-block').addClass('hidden');
+
+                var response_json = resp.responseJSON;
+                
+                $.each(response_json.errors, function(i, v) {
+                    var resp = '* ' + v;
+                    $('#error_' + i).addClass('has-error');
+                    $('#error_'+i+' .help-block').removeClass('hidden').html(resp);
+                });
+                var keys = Object.keys(resp);
+                $('input[name="'+keys[0]+'"]').focus();          
+            }
+        }); // end ajax
+    }
 </script>
