@@ -8,16 +8,17 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form id="project-modal-form">
+                <form id="credit-log-form">
                     <div class="row form-group">
                         <div  class="col-md-6">
                             &nbsp;
                             <input type="hidden" name="id" id="id">
                         </div>
 
-                        <div  class="col-md-6">
+                        <div  class="col-md-6" id="error_date">
                             <label>Date</label>
                             <input type="date" class="form-control text-black" name="date" id="date" disabled>
+                            <span class="help-block"></span>
                         </div>
                     </div>
 
@@ -29,14 +30,16 @@
                         </div>
                     </div>
                     <div class="row form-group">
-                        <div  class="col-md-6">
+                        <div  class="col-md-6" id="error_project_id">
                             <label>Project ID</label>
                             <input type="number" class="form-control text-black" name="project_id" id="project_id" disabled>
+                            <span class="help-block"></span>
                         </div>
                        
-                        <div  class="col-md-6">
+                        <div  class="col-md-6" id="error_time_id">
                             <label>Time ID</label>
                             <input type="number" class="form-control text-black" name="time_id" id="time_id" disabled>
+                            <span class="help-block"></span>
                         </div>
                     </div>
 
@@ -59,7 +62,7 @@
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">
                     Close
                 </button>
-                <button type="button" class="btn btn-primary" onclick="updateCreditLog()" id="credit-log-modal-save-btn">
+                <button type="button" class="btn btn-primary" onclick="saveCreditLogModal()" id="credit-log-modal-save-btn">
                     Save Changes
                 </button>
             </div>

@@ -52,7 +52,9 @@
                             </div>
 
                             <div class="col-md-12 mt-4">
-                                <h3>Credit Logs :</h3>
+                                <h3 class="float-left">Credit Logs :</h3>
+                                <button class="btn btn-info float-right text-white" onclick="showCreditLogModal()">Add New Log</button>
+
                                 <table class="table table-condensed" id="invoicing-table">
                                     <thead>
                                         <tr>
@@ -84,9 +86,7 @@
                                                         class="btn btn-danger btn-xs" 
                                                         onclick="comfirmDeleteCreditLog({{ $credit_log->id }}, '{{ $credit_log->assignable }}')">
                                                         Delete
-                                                    </button>
-
-                                                    
+                                                    </button>                                                    
                                                 </td>
                                             </tr>
                                         @endforeach

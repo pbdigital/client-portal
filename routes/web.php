@@ -50,6 +50,11 @@ Route::group(['prefix' => 'invoicing'], function () {
         'as' => 'invoicing.index'
     ]);
 
+    Route::post("/", [
+        'uses' => 'InvoicingController@store',
+        'as' => 'invoicing.store'
+    ]);
+
     Route::post("/{id}", [
         'uses' => 'InvoicingController@update',
         'as' => 'invoicing.update'
