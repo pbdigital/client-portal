@@ -20,36 +20,51 @@
                 <div class="content ">
                     <!-- START CONTAINER FLUID -->
                     <div class=" container-fluid   container-fixed-lg time-entries">
-                        <table class="table table-striped">
-                            <thead>
-                                <tr>
-                                    <th scope="col">Business</th>
-                                    <th scope="col">Quickbooks Id</th>
-                                    <th scope="col">Target Process Id</th>
-                                    <th scope="col">Total Spent</th>
-                                    <th scope="col">Total Balance</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach ($users_project as $project)
-                                    @if($project->total_credits->total_spent) 
+                        <div class="row">
+                            <div class="col-md-12  mt-4">
+                                <h3 class="float-left">Users Project:</h3>
+                                <button class="btn btn-info float-right text-white" onclick="showProjectModal()">
+                                    Add New Project
+                                </button>
+                                
+                                <table class="table table-striped table-condensed" id="users-project-table">
+                                    <thead>
                                         <tr>
-                                            <td>
-                                            <a href="{{ route('invoicing.show', ['project_id' => $project->project_id]) }}">
-                                                    {{ $project->name }}
-                                                </a>
-                                            </td>
-                                            <td>{{ ($project->quickbooks_client_id) ? $project->quickbooks_client_id : "--" }}</td>
-                                            <td>{{ $project->project_id }}</td>
-                                            <td>{{ $project->total_credits->total_spent }}</td>
-                                            <td>{{ $project->total_credits->total_balance }}</td>
+                                            <th width="5%">#</th>
+                                            <th>Business</th>
+                                            <th>Quickbooks Id</th>
+                                            <th>Target Process Id</th>
+                                            <th>Total Spent</th>
+                                            <th>Total Balance</th>
+                                            <th>&nbsp;</th>
                                         </tr>
-                                    @endif
-                                @endforeach
+                                    </thead>
+                                    <tbody>
+                                        @foreach ($users_project as  $key => $project)
+                                            <tr>
+                                                <td>{{ $key + 1 }}.</td>
+                                                <td>
+                                                    <a href="{{ route('invoicing.show', ['project_id' => $project->project_id]) }}">
+                                                        <span id="column-name-{{ $project->id }}"></span>{{ $project->name }}
+                                                    </a>
+                                                </td>
+                                                <td id="column-quickbooks_client_id-{{ $project->id }}">{{ ($project->quickbooks_client_id) ? $project->quickbooks_client_id : "--" }}</td>
+                                                <td id="column-project_id-{{ $project->id }}">{{ $project->project_id }}</td>
+                                                <td>{{ $project->total_credits->total_spent }}</td>
+                                                <td>{{ $project->total_credits->total_balance }}</td>
+                                                <td class="text-center">
+                                                    <button class="btn btn-primary btn-xs" onclick="showProjectModal({{ json_encode($project) }})">
+                                                        Update
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                        @endforeach
 
-                            </tbody>
-                        </table>
-                         
+                                    </tbody>
+                                </table>
+                                
+                            </div>
+                        </div>
                     </div>
                     <!-- END CONTAINER FLUID -->
                 </div> <!-- .content -->
@@ -59,10 +74,14 @@
                 <!-- START CONTAINER FLUID -->
                 @include('layouts.footer')
                 <!-- END COPYRIGHT -->
+
+                <!-- Credit Log Modal -->
+                @include('pages.invoicing.project-modal')
+                <!-- End Credit Log Modal -->
             </div>
             <!-- END PAGE CONTENT WRAPPER -->
             
-            
+             
         </div>
         <!-- END PAGE CONTAINER -->
 
@@ -77,8 +96,7 @@
         <!-- BEGIN VENDOR JS -->
         @include('layouts.footerscripts')
         <!-- END PAGE LEVEL JS -->
-
- 
         
+        @include('pages.invoicing.index-script')
     </body>
 </html>

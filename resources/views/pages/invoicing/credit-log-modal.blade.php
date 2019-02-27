@@ -8,7 +8,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form id="credit-log-form">
+                <form id="project-modal-form">
                     <div class="row form-group">
                         <div  class="col-md-6">
                             &nbsp;

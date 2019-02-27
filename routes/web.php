@@ -31,16 +31,29 @@ Route::any("/new_task/", "NotificationsController@NewTaskCreated");
 Route::any("time-entries/add/", "TimeEntriesController@tp_receiver_add_entry");
 Route::any("time-entries/", "TimeEntriesController@index");
 
+Route::group(['prefix' => 'project'], function () {
+    Route::post("/", [
+        'uses' => 'Project\ProjectController@store',
+        'as' => 'project.store'
+
+    ]);
+
+    Route::post("/{project_id}", [
+        'uses' => 'Project\ProjectController@update',
+        'as' => 'project.update'
+    ]);
+});
+
 Route::group(['prefix' => 'invoicing'], function () {
     Route::get("/", [
-		'uses' => 'InvoicingController@index',
-		'as' => 'invoicing.index'
+        'uses' => 'InvoicingController@index',
+        'as' => 'invoicing.index'
     ]);
 
     Route::post("/{id}", [
         'uses' => 'InvoicingController@update',
         'as' => 'invoicing.update'
-	]);
+    ]);
 
     Route::get("/{project_id}", [
         'uses' => 'InvoicingController@show',
@@ -51,4 +64,3 @@ Route::group(['prefix' => 'invoicing'], function () {
 Route::get("/logout", function () {
     return View::make("logout");
 });
- 

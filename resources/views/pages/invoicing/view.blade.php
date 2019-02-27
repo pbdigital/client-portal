@@ -26,7 +26,7 @@
                                 <h3 class="float-left">Details :</h3>
                                 <a class="btn btn-success float-right text-white" href="{{ route('invoicing.index') }}">Back To List</a>
                                 
-                                <table class="table">
+                                <table class="table table-condensed">
                                     <tbody>
                                         <tr>
                                             <td>User Name :</td>
@@ -53,7 +53,7 @@
 
                             <div class="col-md-12 mt-4">
                                 <h3>Credit Logs :</h3>
-                                <table class="table" id="invoicing-table">
+                                <table class="table table-condensed" id="invoicing-table">
                                     <thead>
                                         <tr>
                                             <th>#</th>
@@ -75,7 +75,7 @@
                                                 <td id="column-assignable-{{ $credit_log->id }}">{{ $credit_log->assignable }}</td>
                                                 <td id="column-spent-{{ $credit_log->id }}">{{ $credit_log->spent }}</td>
                                                 <td id="column-discount_percent-{{ $credit_log->id }}">{{ $credit_log->discount_percent }}</td>
-                                                <td>
+                                                <td class="text-center">
                                                     <button class="btn btn-primary btn-xs" onclick="showCreditLogModal({{ json_encode($credit_log) }})">Update</button>
                                                 </td>
                                             </tr>
@@ -98,7 +98,7 @@
                 <!-- END COPYRIGHT -->
 
                 <!-- Credit Log Modal -->
-                @include('pages.invoicing.modal')
+                @include('pages.invoicing.credit-log-modal')
                 <!-- End Credit Log Modal -->
             </div>
             <!-- END PAGE CONTENT WRAPPER -->
